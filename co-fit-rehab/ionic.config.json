@@ -1,0 +1,7 @@
+{
+  "name": "co-fit-rehab",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
