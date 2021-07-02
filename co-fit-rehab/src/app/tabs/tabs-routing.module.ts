@@ -12,8 +12,8 @@ const routes: Routes = [
         loadChildren: () => import('../info/info.module').then(m => m.InfoPageModule)
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+        path: 'latihan',
+        loadChildren: () => import('../latihan/latihan.module').then(m => m.LatihanPageModule)
       },
       {
         path: 'tab3',
@@ -21,14 +21,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/info',
+        redirectTo: '/tabs/latihan',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/info',
+    redirectTo: '/tabs/latihan',
     pathMatch: 'full'
   }
 ];
