@@ -233,4 +233,25 @@
 
     --ion-card-background: #1e1e1e;
   }
+
+/**
+  :root {
+  --ion-color-cofitrehab: #ec226a;
+  --ion-color-cofitrehab-rgb: 236,34,106;
+  --ion-color-cofitrehab-contrast: #ffffff;
+  --ion-color-cofitrehab-contrast-rgb: 255,255,255;
+  --ion-color-cofitrehab-shade: #d01e5d;
+  --ion-color-cofitrehab-tint: #ee3879;
+}
+
+.ion-color-cofitrehab {
+  --ion-color-base: var(--ion-color-cofitrehab);
+  --ion-color-base-rgb: var(--ion-color-cofitrehab-rgb);
+  --ion-color-contrast: var(--ion-color-cofitrehab-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-cofitrehab-contrast-rgb);
+  --ion-color-shade: var(--ion-color-cofitrehab-shade);
+  --ion-color-tint: var(--ion-color-cofitrehab-tint);
+}
+**/
+
 }

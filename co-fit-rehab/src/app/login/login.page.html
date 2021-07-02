@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row align="center">
+      <ion-col><br />
+        <img src="assets/img/stethoscope_icon.png" width="30%" align="center" /><br />
+        <h1 style="color:#ec226a"><b>CoFIT REHAB</b></h1>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+    <ion-item>
+      <div color="dark"  slot="start">
+        <ion-icon slot="icon-only" name="person" ></ion-icon>
+    </div>
+      <ion-input type="text" name="phoneNumber" placeholder="Nomor HP"></ion-input>
+    </ion-item>  
+    <ion-item>
+      <div color="dark"  slot="start">
+        <ion-icon slot="icon-only" name="lock-closed"></ion-icon>
+    </div>
+      <ion-input type="text" name="password" placeholder="Password"></ion-input>
+      
+    </ion-item>
+    <br /> <br />
+    <ion-button type="submit" expand="block" color="primary" >Login</ion-button>
+</ion-content>
