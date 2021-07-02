@@ -6,12 +6,21 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+<ion-list>
+  <ion-item>
+    <ion-icon name="calendar-number" item-start></ion-icon>
+      &nbsp; Evaluasi Bulanan
+  </ion-item>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-item>
+    <ion-icon name="calendar" item-start></ion-icon>
+      &nbsp; Evaluasi Mingguan
+  </ion-item>
+
+  <ion-item>
+    <ion-icon name="stats-chart" item-start></ion-icon>
+      &nbsp; Statistik Latihan
+  </ion-item>
+</ion-list>
 </ion-content>

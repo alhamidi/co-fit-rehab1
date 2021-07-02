@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: () => import('../latihan/latihan.module').then(m => m.LatihanPageModule)
       },
       {
+        path: 'kontak',
+        loadChildren: () => import('../kontak/kontak.module').then(m => m.KontakPageModule)
+      },
+      {
         path: 'tab3',
         loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
       },
