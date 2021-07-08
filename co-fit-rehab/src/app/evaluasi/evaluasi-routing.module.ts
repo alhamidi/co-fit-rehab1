@@ -10,6 +10,10 @@ const routes: Routes = [
   {
     path: 'mingguan',
     loadChildren: () => import('./mingguan/mingguan.module').then( m => m.MingguanPageModule)
+  },
+  {
+    path: 'bulanan',
+    loadChildren: () => import('./bulanan/bulanan.module').then( m => m.BulananPageModule)
   }
 ];
 
