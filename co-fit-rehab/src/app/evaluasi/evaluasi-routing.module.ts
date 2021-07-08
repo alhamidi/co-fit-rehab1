@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: '',
     component: EvaluasiPage,
+  },
+  {
+    path: 'mingguan',
+    loadChildren: () => import('./mingguan/mingguan.module').then( m => m.MingguanPageModule)
   }
 ];
 
