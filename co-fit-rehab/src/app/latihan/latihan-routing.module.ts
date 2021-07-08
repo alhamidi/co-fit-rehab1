@@ -6,7 +6,15 @@ const routes: Routes = [
   {
     path: '',
     component: LatihanPage,
-  }
+  },
+  {
+    path: 'pralatihan',
+    loadChildren: () => import('./pralatihan/pralatihan.module').then( m => m.PralatihanPageModule)
+  },
+  {
+    path: 'pascalatihan',
+    loadChildren: () => import('./pascalatihan/pascalatihan.module').then( m => m.PascalatihanPageModule)
+  },
 ];
 
 @NgModule({

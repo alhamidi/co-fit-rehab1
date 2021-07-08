@@ -9,14 +9,15 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },  {
-    path: 'pralatihan',
-    loadChildren: () => import('./pralatihan/pralatihan.module').then( m => m.PralatihanPageModule)
   },
-  {
-    path: 'pascalatihan',
-    loadChildren: () => import('./pascalatihan/pascalatihan.module').then( m => m.PascalatihanPageModule)
-  },
+  // {
+  //   path: 'pralatihan',
+  //   loadChildren: () => import('./pralatihan/pralatihan.module').then( m => m.PralatihanPageModule)
+  // },
+  // {
+  //   path: 'pascalatihan',
+  //   loadChildren: () => import('./pascalatihan/pascalatihan.module').then( m => m.PascalatihanPageModule)
+  // },
 
   // {
   //   path: 'kontak',
