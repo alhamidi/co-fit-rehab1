@@ -20,8 +20,8 @@ const routes: Routes = [
         loadChildren: () => import('../kontak/kontak.module').then(m => m.KontakPageModule)
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'evaluasi',
+        loadChildren: () => import('../evaluasi/evaluasi.module').then(m => m.EvaluasiPageModule)
       },
       {
         path: '',
