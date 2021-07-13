@@ -25,14 +25,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/menu/latihan',
+        redirectTo: '/login',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/menu/latihan',
+    redirectTo: '/login',
     pathMatch: 'full'
   }
 ];
