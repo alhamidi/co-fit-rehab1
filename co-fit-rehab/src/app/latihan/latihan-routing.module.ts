@@ -14,7 +14,15 @@ const routes: Routes = [
   {
     path: 'pascalatihan',
     loadChildren: () => import('./pascalatihan/pascalatihan.module').then( m => m.PascalatihanPageModule)
+  },  {
+    path: 'listvideo',
+    loadChildren: () => import('./listvideo/listvideo.module').then( m => m.ListvideoPageModule)
   },
+  {
+    path: 'video',
+    loadChildren: () => import('./video/video.module').then( m => m.VideoPageModule)
+  },
+
 ];
 
 @NgModule({
