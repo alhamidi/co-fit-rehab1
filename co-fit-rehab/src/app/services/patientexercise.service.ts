@@ -26,10 +26,8 @@ export class PatientExerciseService {
 
   endpoint = 'http://localhost/api/patient_exercise/';
 
-  
-
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders()
   }
 
   constructor(private httpClient: HttpClient) { }
