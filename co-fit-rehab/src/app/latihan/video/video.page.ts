@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ExerciseService } from './../../services/exercise.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-video',
   templateUrl: './video.page.html',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VideoPage implements OnInit {
 
-  constructor() { }
+  Exercise: any = [];
+
+  constructor(
+    private exerciseService: ExerciseService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidEnter() {
+    this.exerciseService.getExercise(1).subscribe((response) => {
+      this.Exercise = response;
+      console.log('**response ' + this.Exercise);
+    })
   }
 
 }

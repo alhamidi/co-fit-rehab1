@@ -3,23 +3,25 @@
   <h5><b>Isian Pasca Latihan</b></h5>
   <br />
   <ion-grid>
+    <form [formGroup]="exerciseForm" (ngSubmit)="onSubmit()">
     <ion-row>
       <ion-col>Skala Borg</ion-col>
-      <ion-col><ion-input type="text" style="background: #f3f3f3;"></ion-input></ion-col>
+      <ion-col><ion-input type="text" style="background: #f3f3f3;" formControlName="pasca_bs"></ion-input></ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col>Saturasi Oksigen</ion-col>
-      <ion-col><ion-input type="text" style="background: #f3f3f3;"></ion-input></ion-col>
+      <ion-col><ion-input type="text" style="background: #f3f3f3;" formControlName="pasca_sato2"></ion-input></ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col>Denyut Jantung</ion-col>
-      <ion-col><ion-input type="text" style="background: #f3f3f3;"></ion-input></ion-col>
+      <ion-col><ion-input type="text" style="background: #f3f3f3;" formControlName="pasca_hr"></ion-input></ion-col>
     </ion-row>
-  </ion-grid>
+  
   <br />
-   <ion-button type="submit" expand="block" color="primary" href="./menu/latihan/" routerDirection="forward">Submit Hasil</ion-button>
-
+   <ion-button type="submit" expand="block" color="primary">Submit Hasil</ion-button>
+</form>
+</ion-grid>
 
 </ion-content>
