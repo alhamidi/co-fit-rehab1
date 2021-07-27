@@ -1,14 +1,31 @@
   <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-item lines="none" href="./menu/evaluasi">
-        <ion-icon name="chevron-back"></ion-icon> 
-        <span class="text" size="small">Kembali ke Evaluasi</span>
-      </ion-item> 
-      
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="menu/evaluasi" text="Kembali"></ion-back-button>
+    </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
 <ion-content class="ion-padding">
   <h5><b>Evaluasi Mingguan</b></h5>
   <br />
+
+<ion-item>
+  <ion-label position="floating">Denyut Jantung Istirahat</ion-label>
+  <ion-input type="number" placeholder="contoh: 60"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Tingkat Kelelahan (BFI)</ion-label>
+  <ion-input type="number" placeholder="contoh: 3.8"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">STS 30 detik</ion-label>
+  <ion-input type="number" placeholder="contoh: 15"></ion-input>
+</ion-item>
+
+  <br />
+   <ion-button type="submit" expand="block" color="primary" href="./menu/latihan/" routerDirection="forward">Submit</ion-button>
+
 </ion-content>

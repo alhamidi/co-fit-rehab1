@@ -21,7 +21,7 @@ export class ListvideoPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    this.exerciseService.getExercises(3).subscribe((response) => {
+    this.exerciseService.getExercises(2).subscribe((response) => {
       this.Exercises = response;
       console.log('**response ' + this.Exercises);
     })

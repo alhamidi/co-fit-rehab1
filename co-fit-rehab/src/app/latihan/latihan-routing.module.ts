@@ -22,6 +22,10 @@ const routes: Routes = [
     path: 'video',
     loadChildren: () => import('./video/video.module').then( m => m.VideoPageModule)
   },
+  {
+    path: 'skala-borg',
+    loadChildren: () => import('./skala-borg/skala-borg.module').then( m => m.SkalaBorgPageModule)
+  },
 
 ];
 

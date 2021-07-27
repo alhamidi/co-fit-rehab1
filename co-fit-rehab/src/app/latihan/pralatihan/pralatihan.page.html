@@ -1,33 +1,32 @@
   <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-item lines="none" href="./menu/latihan/listvideo">
-        <ion-icon name="chevron-back"></ion-icon> 
-        <span class="text" size="small">Kembali ke Daftar Latihan</span>
-        </ion-item>    
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="menu/latihan" text="Kembali"></ion-back-button>
+    </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
 <ion-content class="ion-padding">
   <h5><b>Isian Pra Latihan</b></h5>
   <br />
-  <ion-grid>
-    <ion-row>
-      <ion-col>Skala Borg
-      </ion-col>
-      <ion-col><ion-input type="text" style="background: #f3f3f3;"></ion-input></ion-col>
-    </ion-row>
 
-    <ion-row>
-      <ion-col>Saturasi Oksigen</ion-col>
-      <ion-col><ion-input type="text" style="background: #f3f3f3;"></ion-input></ion-col>
-    </ion-row>
+<ion-item>
+  <ion-label position="floating">Skala Borg</ion-label>
+  <ion-input type="number" placeholder="contoh: 8"></ion-input>
+</ion-item>
 
-    <ion-row>
-      <ion-col>Denyut Jantung</ion-col>
-      <ion-col><ion-input type="text" style="background: #f3f3f3;"></ion-input></ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-item>
+  <ion-label position="floating">Saturasi Oksigen</ion-label>
+  <ion-input type="number" placeholder="contoh: 95"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Denyut Jantung</ion-label>
+  <ion-input type="number" placeholder="contoh: 60"></ion-input>
+</ion-item>
+
   <br />
    <ion-button type="submit" expand="block" color="primary" href="./menu/latihan/video" routerDirection="forward">Mulai Latihan</ion-button>
+
 
 </ion-content>

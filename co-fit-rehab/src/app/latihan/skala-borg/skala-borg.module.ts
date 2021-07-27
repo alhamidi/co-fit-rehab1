@@ -4,18 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PralatihanPageRoutingModule } from './pralatihan-routing.module';
+import { SkalaBorgPageRoutingModule } from './skala-borg-routing.module';
 
-import { PralatihanPage } from './pralatihan.page';
-
+import { SkalaBorgPage } from './skala-borg.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PralatihanPageRoutingModule
+    SkalaBorgPageRoutingModule
   ],
-  declarations: [PralatihanPage]
+  declarations: [SkalaBorgPage]
 })
-export class PralatihanPageModule {}
+export class SkalaBorgPageModule {}
