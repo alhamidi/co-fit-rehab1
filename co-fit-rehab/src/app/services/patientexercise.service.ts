@@ -22,6 +22,7 @@ export class PatientExercise {
 @Injectable({
   providedIn: 'root'
 })
+
 export class PatientExerciseService {
 
   endpoint = 'http://localhost/api/patient_exercise/';

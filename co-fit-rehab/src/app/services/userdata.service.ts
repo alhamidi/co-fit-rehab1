@@ -1,126 +1,51 @@
 import { Injectable } from '@angular/core';
-
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-
-export class Exercise {
-  _id: string;
-  nama: string;
-  tipe: string;
-  deskripsi: string;
-  url: string;
-}
-
+import { Storage } from '@ionic/storage-angular';
+import * as CordovaSQLiteDriver from 'localforage-cordovasqlitedriver'
+ 
+const PRA_HR = 'pra_hr';
+const PRA_SATO2 = 'pra_sato2';
+const PRA_BS = 'pra_bs';
+ 
 @Injectable({
   providedIn: 'root'
 })
 
-export class UserDataService {
+export class UserdataService {
+  data = null;
 
-  endpoint = 'https://localhost/api/exercise/';
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
-  constructor(private httpClient: HttpClient) { }
-
-  getExercise(id): Observable<Exercise[]> {
-    return this.httpClient.get<Exercise[]>(this.endpoint + '?id=' + id)
-      .pipe(
-        tap(_ => console.log(`Exercise fetched id: ${id}`)),
-        catchError(this.handleError<Exercise[]>(`Get exercise id=${id}`))
-      );
+  constructor(private storage: Storage) {
+    this.init();
+  }
+ 
+  async init() {
+    await this.storage.defineDriver(CordovaSQLiteDriver);
+    await this.storage.create();
   }
 
-  getExercises(type): Observable<Exercise[]> {
-    return this.httpClient.get<Exercise[]>(this.endpoint + '?type=' + type)
-      .pipe(
-        tap(_ => console.log(`Exercises fetched type: ${type}`)),
-        catchError(this.handleError<Exercise[]>(`Get exercise type=${type}`))
-      );
+  setPraLatihanData(praBS, praSatO2, praHR) {
+    this.storage.set(PRA_BS, praBS);
+    this.storage.set(PRA_SATO2, praSatO2);
+    this.storage.set(PRA_HR, praHR);
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      console.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-    };
-  }  
+  getPraBS() {
+    return this.storage.get(PRA_BS);
+  }
+
+  getPraSatO2() {
+    return this.storage.get(PRA_SATO2);
+  }
+
+  getPraHR() {
+    return this.storage.get(PRA_HR);
+  }
+
+  getPraLatihanData() {
+    this.data = {
+      PRA_BS: this.storage.get(PRA_BS),
+      PRA_SATO2: this.storage.get(PRA_SATO2),
+      PRA_HR: this.storage.get(PRA_HR)
+    }
+    return this.data
+  }
 }
-
-
-
-/*
-export class User {
-  _id: number;
-  name: string;
-  email: string;
-  username: string;
-}
-
-@Injectable({
-  providedIn: 'root'
-})
-
-export class UserCrudService {
-
-  endpoint = 'http://localhost:3000/users';
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
-  constructor(private httpClient: HttpClient) { }
-
-  createUser(user: User): Observable<any> {
-    return this.httpClient.post<User>(this.endpoint, JSON.stringify(user), this.httpOptions)
-      .pipe(
-        catchError(this.handleError<User>('Error occured'))
-      );
-  }
-
-  getUser(id): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.endpoint + '/' + id)
-      .pipe(
-        tap(_ => console.log(`User fetched: ${id}`)),
-        catchError(this.handleError<User[]>(`Get user id=${id}`))
-      );
-  }
-
-  getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.endpoint)
-      .pipe(
-        tap(users => console.log('Users retrieved!')),
-        catchError(this.handleError<User[]>('Get user', []))
-      );
-  }
-
-  updateUser(id, user: User): Observable<any> {
-    return this.httpClient.put(this.endpoint + '/' + id, JSON.stringify(user), this.httpOptions)
-      .pipe(
-        tap(_ => console.log(`User updated: ${id}`)),
-        catchError(this.handleError<User[]>('Update user'))
-      );
-  }
-
-  deleteUser(id): Observable<User[]> {
-    return this.httpClient.delete<User[]>(this.endpoint + '/' + id, this.httpOptions)
-      .pipe(
-        tap(_ => console.log(`User deleted: ${id}`)),
-        catchError(this.handleError<User[]>('Delete user'))
-      );
-  }
-
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error);
-      console.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-    };
-  }  
-}
-*/

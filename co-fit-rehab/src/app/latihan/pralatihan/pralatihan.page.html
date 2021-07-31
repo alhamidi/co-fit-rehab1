@@ -10,23 +10,24 @@
   <h5><b>Isian Pra Latihan</b></h5>
   <br />
 
+<form [formGroup]="preExerciseForm" (ngSubmit)="setPraLatihanData()">
 <ion-item>
   <ion-label position="floating">Skala Borg</ion-label>
-  <ion-input type="number" placeholder="contoh: 8"></ion-input>
+  <ion-input type="number" placeholder="contoh: 8" formControlName="pra_bs"></ion-input>
 </ion-item>
 
 <ion-item>
   <ion-label position="floating">Saturasi Oksigen</ion-label>
-  <ion-input type="number" placeholder="contoh: 95"></ion-input>
+  <ion-input type="number" placeholder="contoh: 95" formControlName="pra_sato2"></ion-input>
 </ion-item>
 
 <ion-item>
   <ion-label position="floating">Denyut Jantung</ion-label>
-  <ion-input type="number" placeholder="contoh: 60"></ion-input>
+  <ion-input type="number" placeholder="contoh: 60" formControlName="pra_hr"></ion-input>
 </ion-item>
 
   <br />
-   <ion-button type="submit" expand="block" color="primary" href="./menu/latihan/video" routerDirection="forward">Mulai Latihan</ion-button>
-
+   <ion-button type="submit" expand="block" color="primary">Mulai Latihan</ion-button>
+</form>
 
 </ion-content>
