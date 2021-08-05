@@ -6,8 +6,32 @@
     </ion-toolbar>
   </ion-header>
 
-
 <ion-content class="ion-padding">
   <h5><b>Evaluasi Bulanan</b></h5>
   <br />
+
+  <form [formGroup]="monthlyEvalForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Uji Jalan 6 Menit</ion-label>
+      <ion-input type="number" placeholder="contoh: 60" formControlName="uji_jalan"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Kualitas Hidup</ion-label>
+      <ion-input type="number" placeholder="contoh: 3.8" formControlName="kualitas_hidup"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Skala Sesak</ion-label>
+      <ion-input type="number" placeholder="contoh: 5" formControlName="skala_sesak"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Darah</ion-label>
+      <ion-input type="number" placeholder="contoh: 5" formControlName="darah"></ion-input>
+    </ion-item>
+
+    <br />
+     <ion-button type="submit" expand="block" color="dark">Submit</ion-button>
+  </form>
 </ion-content>
