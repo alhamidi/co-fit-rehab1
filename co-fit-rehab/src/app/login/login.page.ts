@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
     private patientService: PatientService    
   ) { 
     this.loginForm = this.formBuilder.group({
-      username: [''],
+      phonenumber: [''],
       password: [''],
     })
   }

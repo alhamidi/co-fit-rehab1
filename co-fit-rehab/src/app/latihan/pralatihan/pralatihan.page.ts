@@ -49,7 +49,9 @@ export class PralatihanPage implements OnInit {
 
     this.userdataService.getPraBS().then(result => {
       console.log("pra bs " + result)
+      this.router.navigate(['/menu/latihan/video']);
     });
+
   }
 
 }

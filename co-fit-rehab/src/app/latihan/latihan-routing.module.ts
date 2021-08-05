@@ -14,7 +14,8 @@ const routes: Routes = [
   {
     path: 'pascalatihan',
     loadChildren: () => import('./pascalatihan/pascalatihan.module').then( m => m.PascalatihanPageModule)
-  },  {
+  },
+  {
     path: 'listvideo',
     loadChildren: () => import('./listvideo/listvideo.module').then( m => m.ListvideoPageModule)
   },
@@ -25,7 +26,11 @@ const routes: Routes = [
   {
     path: 'skala-borg',
     loadChildren: () => import('./skala-borg/skala-borg.module').then( m => m.SkalaBorgPageModule)
+  },  {
+    path: 'pendinginan',
+    loadChildren: () => import('./pendinginan/pendinginan.module').then( m => m.PendinginanPageModule)
   },
+
 
 ];
 

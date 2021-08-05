@@ -10,7 +10,7 @@
   <h5><b>Isian Pasca Latihan</b></h5>
   <br />
   
-    <form [formGroup]="exerciseForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="postExerciseForm" (ngSubmit)="onSubmit()">
       <ion-item>
         <ion-label position="floating">Skala Borg</ion-label>
         <ion-input type="number" placeholder="contoh: 8" formControlName="pasca_bs"></ion-input>
@@ -27,7 +27,7 @@
       </ion-item>
   
   <br />
-   <ion-button type="submit" expand="block" color="primary">Submit Hasil</ion-button>
+   <ion-button type="submit" expand="block" color="dark">Submit Hasil</ion-button>
 </form>
 
 
