@@ -13,20 +13,20 @@
   <form [formGroup]="weeklyEvalForm" (ngSubmit)="onSubmit()">
     <ion-item>
       <ion-label position="floating">Denyut Jantung Istirahat</ion-label>
-      <ion-input type="number" placeholder="contoh: 60" formControlName="rhr"></ion-input>
+      <ion-input type="number" placeholder="contoh: 60" formControlName="rhr" required></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">Tingkat Kelelahan (BFI)</ion-label>
-      <ion-input type="number" placeholder="contoh: 3.8" formControlName="bfi"></ion-input>
+      <ion-input type="number" placeholder="contoh: 3.8" formControlName="bfi" required></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="floating">STS 30 detik</ion-label>
-      <ion-input type="number" placeholder="contoh: 15" formControlName="sts30detik"></ion-input>
+      <ion-input type="number" placeholder="contoh: 15" formControlName="sts30detik" required></ion-input>
     </ion-item>
 
-    <br />
+    <br /><br />
      <ion-button type="submit" expand="block" color="dark">Submit</ion-button>
   </form>
 </ion-content>

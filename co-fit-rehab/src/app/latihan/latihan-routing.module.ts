@@ -26,9 +26,14 @@ const routes: Routes = [
   {
     path: 'skala-borg',
     loadChildren: () => import('./skala-borg/skala-borg.module').then( m => m.SkalaBorgPageModule)
-  },  {
+  },
+  {
     path: 'pendinginan',
     loadChildren: () => import('./pendinginan/pendinginan.module').then( m => m.PendinginanPageModule)
+  },
+  {
+    path: 'pascapendinginan',
+    loadChildren: () => import('./pascapendinginan/pascapendinginan.module').then( m => m.PascapendinginanPageModule)
   },
 
 

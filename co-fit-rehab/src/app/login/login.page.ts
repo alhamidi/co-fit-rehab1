@@ -31,6 +31,7 @@ export class LoginPage implements OnInit {
 
   onSubmit() {
     if (!this.loginForm.valid) {
+      alert("Masukkan nomor HP dan password Anda dengan benar");
       return false;
     } else {
       this.patientService.login(this.loginForm.value)

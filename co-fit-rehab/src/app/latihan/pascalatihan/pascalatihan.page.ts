@@ -3,6 +3,7 @@ import { Component, OnInit, Inject, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder  } from "@angular/forms";
 import { PatientExerciseService } from './../../services/patientexercise.service';
+import { UserdataService } from './../../services/userdata.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class PascalatihanPage implements OnInit {
     private router: Router,
     public formBuilder: FormBuilder,
     private zone: NgZone,
-    private patientExerciseService: PatientExerciseService    
+    private patientExerciseService: PatientExerciseService,
+    private userdataService: UserdataService    
   ) { 
 
 this.postExerciseForm = this.formBuilder.group({
@@ -36,24 +38,25 @@ this.postExerciseForm = this.formBuilder.group({
     if (!this.postExerciseForm.valid) {
       return false;
     } else {
+      // this.setPascaLatihanData();
+      this.router.navigate(['/menu/latihan/pendinginan/']);
+
       this.patientExerciseService.createPatientExercise(this.postExerciseForm.value)
         .subscribe((response) => {
-          alert(response);
-          if (response["status"] == 1) {
           this.zone.run(() => {
             this.postExerciseForm.reset();
-            this.router.navigate(['/menu/latihan']);
-          })}
-          else {
-
-            this.zone.run(() => {
-              alert("Failed");
-            // this.postExerciseForm.reset();
-            // this.router.navigate(['/menu/latihan']);
+            this.router.navigate(['/menu/latihan/pendinginan/']);
           })
-          }
         });
     }
+  }
+
+  setPascaLatihanData() {
+    this.userdataService.setPascaLatihanData(
+      this.postExerciseForm.get('pasca_bs').value,
+      this.postExerciseForm.get('pasca_sato2').value,
+      this.postExerciseForm.get('pasca_hr').value
+    );
   }
 
 }

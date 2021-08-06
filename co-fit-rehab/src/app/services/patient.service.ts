@@ -5,6 +5,8 @@ import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import {Md5} from 'ts-md5/dist/md5';
 
+import { UserdataService } from './userdata.service';
+
 
 export class Patient {
   phonenumber: string;
@@ -24,10 +26,12 @@ export class PatientService {
     headers: new HttpHeaders()
   }
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(
+    private httpClient: HttpClient,
+    private userdataService: UserdataService
+  ) { }
 
   login(user: Patient): Observable<any> {
-    // let postData = JSON.stringify(user);
 
     let postData = {
       phonenumber: user.phonenumber,
@@ -36,11 +40,19 @@ export class PatientService {
 
     this.httpClient.post(this.endpoint, JSON.stringify(postData), this.httpOptions)
         .subscribe(data => {
-          console.log(data);
+          console.log(data["data"][0]);
+          this.storePatientData(data["data"][0]);
          }, error => {
-          console.log(error);
+          console.log("*** error " + error.status);
+          if (error.status == 404) {
+            alert("User tidak ditemukan");
+          }
         });
     return of (1);
+  }
+
+  storePatientData(data) {
+    this.userdataService.setPatientData(data["id"], data["nama"], data["kode"], data["no_rm"]);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

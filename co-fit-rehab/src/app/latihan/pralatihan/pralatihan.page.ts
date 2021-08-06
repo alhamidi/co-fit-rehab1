@@ -40,6 +40,7 @@ export class PralatihanPage implements OnInit {
       this.router.navigate(['/menu/latihan/video']);
     }
   }
+  
   setPraLatihanData() {
     this.userdataService.setPraLatihanData(
       this.preExerciseForm.get('pra_bs').value,
@@ -47,11 +48,7 @@ export class PralatihanPage implements OnInit {
       this.preExerciseForm.get('pra_hr').value
     );
 
-    this.userdataService.getPraBS().then(result => {
-      console.log("pra bs " + result)
-      this.router.navigate(['/menu/latihan/video']);
-    });
-
+    this.router.navigate(['/menu/latihan/video']);
   }
 
 }

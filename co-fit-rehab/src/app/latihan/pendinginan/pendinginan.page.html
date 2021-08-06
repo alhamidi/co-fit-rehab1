@@ -1,9 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>pendinginan</ion-title>
-  </ion-toolbar>
-</ion-header>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="menu/latihan" text="Kembali"></ion-back-button>
+    </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true" class="ion-padding">
+
+   <ion-list>
+    <ion-item *ngFor="let exercise of Exercise">
+      <ion-label>
+        <h1>Pendinginan</h1>
+        <h2><strong>{{exercise.nama | titlecase}}</strong></h2>        
+        <h3>{{exercise.deskripsi}}</h3>
+
+        <br />
+
+        <iframe width="300" height="150" src="https://www.youtube.com/embed/ECxYJcnvyMw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </ion-label>
+      <br />
+    </ion-item>
+  </ion-list>
+
+  <ion-button type="submit" expand="block" color="dark" href="./menu/latihan/pascapendinginan" routerDirection="forward">Berhenti</ion-button>
 
 </ion-content>
