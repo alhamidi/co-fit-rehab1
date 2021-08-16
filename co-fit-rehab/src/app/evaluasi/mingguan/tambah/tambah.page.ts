@@ -32,6 +32,7 @@ export class TambahPage implements OnInit {
 
   onSubmit() {
     if (!this.weeklyEvalForm.valid) {
+      alert("Harap lengkapi form evaluasi");
       return false;
     } else {
       this.weeklyEvalService.submitWeeklyEval(this.weeklyEvalForm.value)
