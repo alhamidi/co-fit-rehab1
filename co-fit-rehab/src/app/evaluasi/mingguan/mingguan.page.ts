@@ -11,38 +11,23 @@ import { WeeklyEvaluationService } from './../../services/weekly-evaluation.serv
 })
 
 export class MingguanPage implements OnInit {
-
-  weeklyEvalForm: FormGroup;
+  Evaluation: any = [];
 
   constructor(
-    private router: Router,
-    public formBuilder: FormBuilder,
-    private zone: NgZone,
-    private weeklyEvalService: WeeklyEvaluationService    
-  ) { 
-    this.weeklyEvalForm = this.formBuilder.group({
-      rhr: [''],
-      bfi: [''],
-      sts30detik: [''],
-    })
-  }
+    private evalService: WeeklyEvaluationService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
-  onSubmit() {
-    if (!this.weeklyEvalForm.valid) {
-      return false;
-    } else {
-      this.weeklyEvalService.submitWeeklyEval(this.weeklyEvalForm.value)
-        .subscribe((response) => {
-          this.zone.run(() => {
-            this.weeklyEvalForm.reset();
-            this.router.navigate(['/menu/evaluasi/statistik']);
-          })
-        });
-    }
+  ionViewDidEnter() {
+    this.evalService.getEvaluations(1).subscribe((response) => {
+      this.Evaluation = response;
+      console.log('**response ' + this.Evaluation);
+    })
   }
+
 
 }
 

@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import {Md5} from 'ts-md5/dist/md5';
+import { Router } from '@angular/router';
 
 import { UserdataService } from './userdata.service';
 
@@ -28,7 +29,8 @@ export class PatientService {
 
   constructor(
     private httpClient: HttpClient,
-    private userdataService: UserdataService
+    private userdataService: UserdataService,
+    private router: Router
   ) { }
 
   login(user: Patient): Observable<any> {
@@ -41,18 +43,21 @@ export class PatientService {
     this.httpClient.post(this.endpoint, JSON.stringify(postData), this.httpOptions)
         .subscribe(data => {
           console.log(data["data"][0]);
+          this.router.navigate(['/menu/latihan']);
           this.storePatientData(data["data"][0]);
          }, error => {
-          console.log("*** error " + error.status);
+          console.log("Login Error: " + error.status);
           if (error.status == 404) {
             alert("User tidak ditemukan");
+          } else {
+            alert("Terjadi gangguan sistem. Silakan coba kembali");
           }
         });
     return of (1);
   }
 
   storePatientData(data) {
-    this.userdataService.setPatientData(data["id"], data["nama"], data["kode"], data["no_rm"]);
+    this.userdataService.setPatientData(data["id"], data["nama"]);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

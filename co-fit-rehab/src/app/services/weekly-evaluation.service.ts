@@ -51,6 +51,22 @@ export class WeeklyEvaluationService {
     return of (1);
   }
 
+  getEvaluation(id): Observable<WeeklyEval[]> {
+    return this.httpClient.get<WeeklyEval[]>(this.endpoint + '?id=' + id)
+      .pipe(
+        tap(_ => console.log(`Weekly Evaluation fetched id: ${id}`)),
+        catchError(this.handleError<WeeklyEval[]>(`Get weekly evaluation id=${id}`))
+      );
+  }
+
+  getEvaluations(patient_id): Observable<WeeklyEval[]> {
+    return this.httpClient.get<WeeklyEval[]>(this.endpoint + '?patient_id=' + patient_id)
+      .pipe(
+        tap(_ => console.log(`Weekly Evaluation fetched patient id: ${patient_id}`)),
+        catchError(this.handleError<WeeklyEval[]>(`Get weekly evaluation patient id=${patient_id}`))
+      );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

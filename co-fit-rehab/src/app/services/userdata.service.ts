@@ -32,11 +32,9 @@ export class UserdataService {
     await this.storage.create();
   }
 
-  setPatientData(patientId, patientName, patientCode, noRm) {
+  setPatientData(patientId, patientName) {
     this.storage.set(PATIENT_ID, patientId);
     this.storage.set(PATIENT_NAME, patientName);
-    this.storage.set(PATIENT_CODE, patientCode);
-    this.storage.set(NO_RM, noRm);
   }
 
   setPraLatihanData(praBS, praSatO2, praHR) {

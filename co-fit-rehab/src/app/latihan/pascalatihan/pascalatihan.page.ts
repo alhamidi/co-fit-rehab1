@@ -36,6 +36,7 @@ this.postExerciseForm = this.formBuilder.group({
 
   onSubmit() {
     if (!this.postExerciseForm.valid) {
+      alert("Harap lengkapi form pasca latihan");
       return false;
     } else {
       // this.setPascaLatihanData();

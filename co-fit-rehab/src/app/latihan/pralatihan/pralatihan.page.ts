@@ -34,6 +34,7 @@ export class PralatihanPage implements OnInit {
 
   onSubmit() {
     if (!this.preExerciseForm.valid) {
+      alert("Harap lengkapi form pralatihan");
       return false;
     } else {
       this.setPraLatihanData();
@@ -47,8 +48,6 @@ export class PralatihanPage implements OnInit {
       this.preExerciseForm.get('pra_sato2').value,
       this.preExerciseForm.get('pra_hr').value
     );
-
-    this.router.navigate(['/menu/latihan/video']);
   }
 
 }

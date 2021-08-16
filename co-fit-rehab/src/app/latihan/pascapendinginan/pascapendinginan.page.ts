@@ -35,6 +35,7 @@ this.postCoolingdownForm = this.formBuilder.group({
 
   onSubmit() {
     if (!this.postCoolingdownForm.valid) {
+      alert("Harap lengkapi form pasca pendinginan");
       return false;
     } else {
       this.patientExerciseService.createPatientExercise(this.postCoolingdownForm.value)

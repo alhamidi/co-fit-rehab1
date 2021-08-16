@@ -7,26 +7,83 @@
   </ion-header>
 
 <ion-content class="ion-padding">
-  <h5><b>Evaluasi Mingguan</b></h5>
+  <h5><b>Riwayat Evaluasi Mingguan</b></h5>
   <br />
 
-  <form [formGroup]="weeklyEvalForm" (ngSubmit)="onSubmit()">
-    <ion-item>
-      <ion-label position="floating">Denyut Jantung Istirahat</ion-label>
-      <ion-input type="number" placeholder="contoh: 60" formControlName="rhr" required></ion-input>
+
+  <ion-list>
+    <ion-item align="center">
+
+    <ion-grid >
+      <ion-row >
+        <ion-col align="center">
+          Tanggal
+        </ion-col>
+        <ion-col align="center">
+          RHR
+        </ion-col>
+        <ion-col align="center">
+          BFI
+        </ion-col>
+        <ion-col align="center">
+          STS
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+      <br />
     </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Tingkat Kelelahan (BFI)</ion-label>
-      <ion-input type="number" placeholder="contoh: 3.8" formControlName="bfi" required></ion-input>
-    </ion-item>
+   <!--  <ion-item align="center">
 
-    <ion-item>
-      <ion-label position="floating">STS 30 detik</ion-label>
-      <ion-input type="number" placeholder="contoh: 15" formControlName="sts30detik" required></ion-input>
-    </ion-item>
+<ion-grid>
+      <ion-row >
+        <ion-col align="center">
+          2021-08-10
+        </ion-col>
+        <ion-col align="center">
+          60
+        </ion-col>
+        <ion-col align="center">
+          5
+        </ion-col>
+        <ion-col align="center">
+          15
+        </ion-col>
 
-    <br /><br />
-     <ion-button type="submit" expand="block" color="dark">Submit</ion-button>
-  </form>
+      </ion-row>
+    </ion-grid>
+      <br />
+    </ion-item> -->
+
+    <ion-item *ngFor="let eval of Evaluation.data">
+       <ion-grid >
+      <ion-row >
+        <ion-col align="center">
+          {{eval.tanggal}}
+        </ion-col>
+        <ion-col align="center">
+          {{eval.rhr}}
+        </ion-col>
+        <ion-col align="center">
+          {{eval.bfi}}
+        </ion-col>
+        <ion-col align="center">
+          {{eval.sts30detik}}
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+      <br />
+      <br />
+    </ion-item>
+  </ion-list>
+
+  <br />
+
+  <ion-button type="submit" expand="block" color="dark" href="menu/evaluasi/mingguan/tambah">   Tambah Data
+  </ion-button>
+
+
+
 </ion-content>

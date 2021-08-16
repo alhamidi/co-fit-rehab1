@@ -10,7 +10,7 @@
   <h5><b>Isian Pra Latihan</b></h5>
   <br />
 
-<form [formGroup]="preExerciseForm" (ngSubmit)="setPraLatihanData()">
+<form [formGroup]="preExerciseForm" (ngSubmit)="onSubmit()">
 <ion-item>
   <ion-label position="floating">Skala Borg</ion-label>
   <ion-input type="number" placeholder="contoh: 8" formControlName="pra_bs" required></ion-input>

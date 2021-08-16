@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'pascapendinginan',
     loadChildren: () => import('./pascapendinginan/pascapendinginan.module').then( m => m.PascapendinginanPageModule)
   },
+  {
+    path: 'statistik',
+    loadChildren: () => import('./statistik/statistik.module').then( m => m.StatistikPageModule)
+  }
 
 
 ];

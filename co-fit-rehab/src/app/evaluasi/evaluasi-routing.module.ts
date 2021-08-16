@@ -15,10 +15,6 @@ const routes: Routes = [
     path: 'bulanan',
     loadChildren: () => import('./bulanan/bulanan.module').then( m => m.BulananPageModule)
   },
-  {
-    path: 'statistik',
-    loadChildren: () => import('./statistik/statistik.module').then( m => m.StatistikPageModule)
-  }
 ];
 
 @NgModule({
