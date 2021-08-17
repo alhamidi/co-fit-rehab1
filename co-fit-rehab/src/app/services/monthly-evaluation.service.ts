@@ -53,6 +53,14 @@ export class MonthlyEvaluationService {
     return of (1);
   }
 
+  getEvaluations(patientId): Observable<MonthlyEval[]> {
+    return this.httpClient.get<MonthlyEval[]>(this.endpoint + '?patient_id=' + patientId)
+      .pipe(
+        tap(_ => console.log(`Monthly Evaluation fetched patient id: ${patientId}`)),
+        catchError(this.handleError<MonthlyEval[]>(`Get monthly evaluation patient id=${patientId}`))
+      );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
