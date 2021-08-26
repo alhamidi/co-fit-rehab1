@@ -1,29 +1,23 @@
-  <ion-header [translucent]="true">
-    <ion-toolbar>
+<ion-header [translucent]="true">
+   <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-back-button defaultHref="menu/latihan" text="Kembali"></ion-back-button>
-    </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+         <ion-back-button defaultHref="menu/latihan" text="Kembali"></ion-back-button>
+      </ion-buttons>
+   </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-
    <ion-list>
-    <ion-item *ngFor="let exercise of Exercise.data">
-      <ion-label>
-        <!-- <h2><strong>{{exercise.nama | titlecase}}</strong></h2>        
-        <h3>{{exercise.deskripsi}}</h3> -->
-
-        <h2><strong>Latihan Endurans</strong></h2>        
-        
-        <br />
-
-        <iframe width="300" height="150" src="https://www.youtube.com/embed/ECxYJcnvyMw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </ion-label>
-      <br />
-    </ion-item>
-  </ion-list>
-
-  <ion-button type="submit" expand="block" color="dark" href="./menu/latihan/pascalatihan" routerDirection="forward">Berhenti</ion-button>
-
+      <ion-item *ngFor="let exercise of Exercise.data">
+         <ion-label>
+            <h2><strong>{{exercise.nama | titlecase}}</strong></h2>
+            <ion-label #exerciseid id="exerciseid" hidden>{{exercise.id}}</ion-label>
+            <ion-input type="text" id="exercise_id" name="exercise_id" value={{exercise.id}} hidden></ion-input>
+            <br />
+            <iframe width="300" height="150" src="https://www.youtube.com/embed/ECxYJcnvyMw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+         </ion-label>
+         <br />
+      </ion-item>
+      <ion-button type="submit" expand="block" color="dark" (click)="onSubmit()">Berhenti</ion-button>
+   </ion-list>
 </ion-content>

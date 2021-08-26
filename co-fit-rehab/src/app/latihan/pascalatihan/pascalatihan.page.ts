@@ -39,9 +39,6 @@ this.postExerciseForm = this.formBuilder.group({
       alert("Harap lengkapi form pasca latihan");
       return false;
     } else {
-      // this.setPascaLatihanData();
-      this.router.navigate(['/menu/latihan/pendinginan/']);
-
       this.patientExerciseService.createPatientExercise(this.postExerciseForm.value)
         .subscribe((response) => {
           this.zone.run(() => {
@@ -51,13 +48,4 @@ this.postExerciseForm = this.formBuilder.group({
         });
     }
   }
-
-  setPascaLatihanData() {
-    this.userdataService.setPascaLatihanData(
-      this.postExerciseForm.get('pasca_bs').value,
-      this.postExerciseForm.get('pasca_sato2').value,
-      this.postExerciseForm.get('pasca_hr').value
-    );
-  }
-
 }

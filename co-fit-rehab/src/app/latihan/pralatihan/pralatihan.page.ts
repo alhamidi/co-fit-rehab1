@@ -29,6 +29,7 @@ export class PralatihanPage implements OnInit {
   }
 
   ngOnInit() {
+    // this.userdataService.getCurrentExercise().then((xx) => {alert("ini loh " + xx)});
   }
 
 
@@ -37,17 +38,22 @@ export class PralatihanPage implements OnInit {
       alert("Harap lengkapi form pralatihan");
       return false;
     } else {
-      this.setPraLatihanData();
+      this.setPatientExerciseData();
       this.router.navigate(['/menu/latihan/video']);
     }
   }
   
-  setPraLatihanData() {
-    this.userdataService.setPraLatihanData(
-      this.preExerciseForm.get('pra_bs').value,
-      this.preExerciseForm.get('pra_sato2').value,
-      this.preExerciseForm.get('pra_hr').value
-    );
+  setPatientExerciseData() {
+    this.userdataService.getPatientId().then((patientId) => {
+      let data = {
+        'id_pasien': patientId,
+        'pra_bs': this.preExerciseForm.get('pra_bs').value,
+        'pra_sato2': this.preExerciseForm.get('pra_sato2').value,
+        'pra_hr': this.preExerciseForm.get('pra_hr').value
+      }
+      this.userdataService.setPatientExerciseData(data);  
+    });
+    
   }
 
 }

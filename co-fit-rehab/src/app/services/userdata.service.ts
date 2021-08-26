@@ -3,10 +3,10 @@ import { Storage } from '@ionic/storage-angular';
 
 import * as CordovaSQLiteDriver from 'localforage-cordovasqlitedriver'
  
-const PATIENT_ID = 'patient_id'
-const PATIENT_NAME = 'patient_name'
-const PATIENT_CODE = 'patient_code'
-const NO_RM = 'no_rm'
+const PATIENT_ID = 'patient_id';
+const PATIENT_NAME = 'patient_name';
+const PATIENT_CODE = 'patient_code';
+const NO_RM = 'no_rm';
 
 const PRA_HR = 'pra_hr';
 const PRA_SATO2 = 'pra_sato2';
@@ -15,6 +15,10 @@ const PRA_BS = 'pra_bs';
 const PASCA_HR = 'pasca_hr';
 const PASCA_SATO2 = 'pasca_sato2';
 const PASCA_BS = 'pasca_bs';
+
+const CURRENT_EXERCISE = 'current_exercise';
+const PATIENT_EXERCISE = 'patient_exercise';
+const EXERCISE_DATA = 'exercise_data';
  
 @Injectable({
   providedIn: 'root'
@@ -37,16 +41,22 @@ export class UserdataService {
     this.storage.set(PATIENT_NAME, patientName);
   }
 
-  setPraLatihanData(praBS, praSatO2, praHR) {
-    this.storage.set(PRA_BS, praBS);
-    this.storage.set(PRA_SATO2, praSatO2);
-    this.storage.set(PRA_HR, praHR);
+  setPatientExerciseData(data) {
+    this.storage.set(PATIENT_EXERCISE, JSON.stringify(data));
   }
 
   setPascaLatihanData(pascaBS, pascaSatO2, pascaHR) {
     this.storage.set(PASCA_BS, pascaBS);
     this.storage.set(PASCA_SATO2, pascaSatO2);
     this.storage.set(PASCA_HR, pascaHR);
+  }
+
+  setCurrentExercise(data) {
+    this.storage.set(CURRENT_EXERCISE, data);
+  }
+
+  setExerciseData(data) {
+    this.storage.set(EXERCISE_DATA, JSON.stringify(data));
   }
 
   // get patient data
@@ -66,7 +76,11 @@ export class UserdataService {
     return await this.storage.get(NO_RM);
   }
 
-  // get pre exercise data
+  // get patient exercise data
+  public async getPatientExerciseData() {
+    return await this.storage.get(PATIENT_EXERCISE);
+  }
+
   public async getPraBS() {
     return await this.storage.get(PRA_BS);
   }
@@ -90,6 +104,14 @@ export class UserdataService {
 
   public async getPascaHR() {
     return await this.storage.get(PASCA_HR);
+  }
+
+  public async getCurrentExercise() {
+    return await this.storage.get(CURRENT_EXERCISE);
+  }
+
+  public async getExerciseData() {
+    return await this.storage.get(EXERCISE_DATA);
   }
 
   public async remove(key){
