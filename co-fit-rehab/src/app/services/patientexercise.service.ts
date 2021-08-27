@@ -8,7 +8,7 @@ import { formatDate } from '@angular/common';
 
 
 export class PatientExercise {
-  _id: string;
+  id: string;
   id_pasien: string;
   id_latihan: string;
   tanggal: string;
@@ -32,6 +32,7 @@ export class PatientExercise {
 export class PatientExerciseService {
 
   endpoint = 'http://localhost/api/patient_exercise/';
+  updateEndpoint = 'http://localhost/api/patient_exercise/?type=update';
 
   httpOptions = {
     headers: new HttpHeaders()
@@ -62,7 +63,7 @@ export class PatientExerciseService {
 
       this.httpClient.post(this.endpoint, JSON.stringify(postData), this.httpOptions)
         .subscribe(data => {
-          alert(data['message']);
+          this.handleResponse(data);
           console.log(data);
          }, error => {
           console.log(error);
@@ -70,48 +71,42 @@ export class PatientExerciseService {
       
     });
     
-    // let postData = {
-    //   id_pasien: 1,
-    //   id_latihan: 3,
-    //   tanggal: today,
-    //   waktu_mulai: '2021-08-04 20:00:00',
-    //   waktu_selesai: '2021-08-04 20:10:00',
-    //   pra_bs: 8,
-    //   pasca_bs: 7,
-    //   cd_bs: 6,
-    //   pra_sato2: 95,
-    //   pasca_sato2: 96,
-    //   cd_sato2: 95,
-    //   pra_hr: 60,
-    //   pasca_hr: 65,
-    //   cd_hr: 60,
-    // }
-
-    
     return of (1);
   }
 
   updatePatientExercise(patientExercise: PatientExercise): Observable<any> {
-    // var today = formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'en');
-    // console.log("today " + today);
+    this.userdataService.getLatestId().then((latestId) => {
+      let updatedData = {
+        id: latestId,
+        cd_bs: patientExercise['cd_hr'],
+        cd_sato2: patientExercise['cd_sato2'],
+        cd_hr: patientExercise['cd_hr'],
+      }
 
-    let updatedData = {
-      _id_pasien: 1,
-      cd_bs: 6,
-      cd_sato2: 95,
-      cd_hr: 60,
-    }
+      alert(JSON.stringify(updatedData));
 
-    this.httpClient.put(this.endpoint, JSON.stringify(updatedData), this.httpOptions)
+      this.httpClient.post(this.updateEndpoint, JSON.stringify(updatedData), this.httpOptions)
         .subscribe(data => {
-          alert(data['message']);
+          alert("Data latihan pasien berhasil simpan");
           console.log(data);
          }, error => {
           console.log(error);
         });
+    });
     return of (1);
   }
 
+  private handleResponse(response) {
+    if(response['status']) {
+      // store data id in local storage
+      this.userdataService.setLatestId(response['last_id']);
+
+      alert("Data latihan pasien berhasil disimpan");
+    } else {
+      alert("Gagal menyimpan data latihan pasien");
+    }
+  }
+    
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

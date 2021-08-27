@@ -6,9 +6,9 @@ import { Router } from '@angular/router';
 import { Pipe } from '@angular/core';
 import { DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
 
-@Pipe({
-  name: 'safe'
-})
+// @Pipe({
+//   name: 'safe'
+// })
 
 
 export class ExerciseData
@@ -18,7 +18,7 @@ export class ExerciseData
   tipe: string;
   deskripsi: string;
   url: string;
-  safe_url: SafeUrl;
+  // safe_url: SafeUrl;
 }
 
 @Component({
@@ -42,19 +42,20 @@ export class PendinginanPage implements OnInit {
   ionViewDidEnter() {
     this.exerciseService.getExercises(4).subscribe((response) => {
   
-      for (var data of response["data"]) {
-        var exercise = new ExerciseData();
-        exercise._id = data._id;
-        exercise.nama = data.nama;
-        exercise.tipe = data.tipe;
-        exercise.deskripsi = data.deskripsi;
-        exercise.url = data.url;
-        exercise.safe_url = this.sanitizer.bypassSecurityTrustUrl(data.url);
+      // for (var data of response["data"]) {
+      //   var exercise = new ExerciseData();
+      //   exercise._id = data._id;
+      //   exercise.nama = data.nama;
+      //   exercise.tipe = data.tipe;
+      //   exercise.deskripsi = data.deskripsi;
+      //   exercise.url = data.url;
+      //   exercise.safe_url = this.sanitizer.bypassSecurityTrustUrl(data.url);
 
-        this.Exercise.push(exercise);
+      //   this.Exercise.push(exercise);
 
-      }
-      // this.Exercise = response;
+      // }
+      
+      this.Exercise = response;
       console.log('**response ' + this.Exercise);
     })
   }

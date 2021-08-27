@@ -19,6 +19,7 @@ const PASCA_BS = 'pasca_bs';
 const CURRENT_EXERCISE = 'current_exercise';
 const PATIENT_EXERCISE = 'patient_exercise';
 const EXERCISE_DATA = 'exercise_data';
+const LATEST_ID = 'latest_id'; 
  
 @Injectable({
   providedIn: 'root'
@@ -45,18 +46,16 @@ export class UserdataService {
     this.storage.set(PATIENT_EXERCISE, JSON.stringify(data));
   }
 
-  setPascaLatihanData(pascaBS, pascaSatO2, pascaHR) {
-    this.storage.set(PASCA_BS, pascaBS);
-    this.storage.set(PASCA_SATO2, pascaSatO2);
-    this.storage.set(PASCA_HR, pascaHR);
-  }
-
   setCurrentExercise(data) {
     this.storage.set(CURRENT_EXERCISE, data);
   }
 
   setExerciseData(data) {
     this.storage.set(EXERCISE_DATA, JSON.stringify(data));
+  }
+
+  setLatestId(data) {
+    this.storage.set(LATEST_ID, data);
   }
 
   // get patient data
@@ -112,6 +111,10 @@ export class UserdataService {
 
   public async getExerciseData() {
     return await this.storage.get(EXERCISE_DATA);
+  }
+
+  public async getLatestId() {
+    return await this.storage.get(LATEST_ID);
   }
 
   public async remove(key){
