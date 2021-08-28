@@ -31,8 +31,8 @@ export class PatientExercise {
 
 export class PatientExerciseService {
 
-  endpoint = 'http://localhost/api/patient_exercise/';
-  updateEndpoint = 'http://localhost/api/patient_exercise/?type=update';
+  endpoint = 'https://localhost/api/patient_exercise/';
+  updateEndpoint = 'https://localhost/api/patient_exercise/?type=update';
 
   httpOptions = {
     headers: new HttpHeaders()
@@ -83,8 +83,6 @@ export class PatientExerciseService {
         cd_hr: patientExercise['cd_hr'],
       }
 
-      alert(JSON.stringify(updatedData));
-
       this.httpClient.post(this.updateEndpoint, JSON.stringify(updatedData), this.httpOptions)
         .subscribe(data => {
           alert("Data latihan pasien berhasil simpan");
@@ -94,6 +92,14 @@ export class PatientExerciseService {
         });
     });
     return of (1);
+  }
+
+  getPatientExercises(patientId): Observable<PatientExercise[]> {
+    return this.httpClient.get<PatientExercise[]>(this.endpoint + '?patient_id=' + patientId)
+      .pipe(
+        tap(_ => console.log(`Patient Exercises fetched patient id: ${patientId}`)),
+        catchError(this.handleError<PatientExercise[]>(`Get patient exercises for patient id=${patientId}`))
+      );
   }
 
   private handleResponse(response) {

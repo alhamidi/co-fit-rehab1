@@ -8,60 +8,33 @@
 
 <ion-content class="ion-padding">
   <h5><b>Riwayat Evaluasi Bulanan</b></h5>
-  <br />
-
-
-  <ion-list>
-    <ion-item align="center">
-
-    <ion-grid >
-      <ion-row >
-        <ion-col align="center">
-          Tanggal
-        </ion-col>
-        <ion-col align="center">
-          Uji Jalan
-        </ion-col>
-        <ion-col align="center">
-          Kualitas Hidup
-        </ion-col>
-        <ion-col align="center">
-          Skala Sesak
-        </ion-col>
-        <ion-col align="center">
-          Darah
-        </ion-col>
-
-      </ion-row>
-    </ion-grid>
-      <br />
-    </ion-item>
-
+  
+<ion-card>
     <ion-item *ngFor="let eval of Evaluation.data">
-       <ion-grid >
-      <ion-row >
-        <ion-col align="center">
-          {{eval.tanggal}}
-        </ion-col>
-        <ion-col align="center">
-          {{eval.uji_jalan}}
-        </ion-col>
-        <ion-col align="center">
-          {{eval.kualitas_hidup}}
-        </ion-col>
-        <ion-col align="center">
-          {{eval.skala_sesak}}
-        </ion-col>
-        <ion-col align="center">
-          {{eval.darah}}
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-      <br />
-      <br />
+        
+      <ion-card-content>
+        <p>
+          Tanggal: {{eval.tanggal}}
+        </p>
+        <br />
+        <p>
+          Uji Jalan: {{eval.uji_jalan}}
+        </p>
+        <p>
+          Kualitas Hidup: {{eval.kualitas_hidup}}
+        </p>
+        <p>
+          Skala Sesak: {{eval.skala_sesak}}
+        </p>
+        <p>
+          Darah: {{eval.darah}}
+        </p>
+      </ion-card-content>
     </ion-item>
-  </ion-list>
+  </ion-card> 
 
+      <br />
+      <br />
   <br />
 
   <ion-button type="submit" expand="block" color="dark" href="menu/evaluasi/bulanan/tambah">   Input Data Evaluasi

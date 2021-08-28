@@ -8,60 +8,34 @@
 
 <ion-content class="ion-padding">
   <h5><b>Riwayat Evaluasi Mingguan</b></h5>
-  <br />
-
-
-  <ion-list>
-    <ion-item align="center">
-
-    <ion-grid >
-      <ion-row >
-        <ion-col align="center">
-          Tanggal
-        </ion-col>
-        <ion-col align="center">
-          RHR
-        </ion-col>
-        <ion-col align="center">
-          BFI
-        </ion-col>
-        <ion-col align="center">
-          STS
-        </ion-col>
-
-      </ion-row>
-    </ion-grid>
-      <br />
-    </ion-item>
-
+  
+  <ion-card>
     <ion-item *ngFor="let eval of Evaluation.data">
-       <ion-grid >
-      <ion-row >
-        <ion-col align="center">
-          {{eval.tanggal}}
-        </ion-col>
-        <ion-col align="center">
-          {{eval.rhr}}
-        </ion-col>
-        <ion-col align="center">
-          {{eval.bfi}}
-        </ion-col>
-        <ion-col align="center">
-          {{eval.sts30detik}}
-        </ion-col>
+        
+      <ion-card-content>
+        <p>
+          Tanggal: {{eval.tanggal}}
+        </p>
+        <br />
+        <p>
+          Detak Jantung Istirahat: {{eval.rhr}}
+        </p>
+        <p>
+          Tingkat Kelelahan: {{eval.bfi}}
+        </p>
+        <p>
+          STS 30 detik: {{eval.sts30detik}}
+        </p>
+      </ion-card-content>
 
-      </ion-row>
-    </ion-grid>
       <br />
       <br />
     </ion-item>
-  </ion-list>
+  </ion-card>  
 
   <br />
 
   <ion-button type="submit" expand="block" color="dark" href="menu/evaluasi/mingguan/tambah">   Input Data Evaluasi
   </ion-button>
-
-
 
 </ion-content>
