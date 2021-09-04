@@ -7,7 +7,7 @@
   </ion-header>
 
 <ion-content class="ion-padding">
-  <h5><b>Riwayat Evaluasi Mingguan</b></h5>
+  <!-- <h5><b>Riwayat Evaluasi Mingguan</b></h5>
   
   <ion-card>
     <ion-item *ngFor="let eval of Evaluation.data">
@@ -31,7 +31,28 @@
       <br />
       <br />
     </ion-item>
-  </ion-card>  
+  </ion-card>   -->
+
+  <p>Denyut Jantung Istirahat</p>
+  <ion-card>
+    <canvas id="rhrCanvas" #rhrCanvas></canvas>
+  </ion-card>
+
+  <br />
+
+  <p>Tingkat Kelelahan</p>
+  <ion-card>
+    <canvas id="bfiCanvas" #bfiCanvas></canvas>
+  </ion-card>
+
+  <br />
+
+  <p>STS 30 Detik</p>
+  <ion-card>
+    <canvas id="stsCanvas" #stsCanvas></canvas>
+  </ion-card>
+
+  <br />
 
   <br />
 
