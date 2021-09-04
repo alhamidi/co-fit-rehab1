@@ -7,9 +7,9 @@
   </ion-header>
 
 <ion-content class="ion-padding">
-  <h5><b>Riwayat Latihan</b></h5>
+  <!-- <h5><b>Statistik Latihan</b></h5> -->
   
-  <ion-card>
+  <!-- <ion-card>
     <ion-item *ngFor="let exercise of Exercises.data">
         
       <ion-card-content>
@@ -40,6 +40,25 @@
       </ion-card-content>
 
     </ion-item>
-  </ion-card>  
+  </ion-card>  --> 
+
+  <p>Denyut Jantung</p>
+  <ion-card>
+    <canvas id="hrCanvas" #hrCanvas></canvas>
+  </ion-card>
+
+  <br />
+  
+  <p>Saturasi Oksigen</p>
+  <ion-card>
+    <canvas id="sato2Canvas" #sato2Canvas></canvas>
+  </ion-card>
+
+  <br />
+
+  <p>Skala Borg</p>
+  <ion-card>
+    <canvas id="sbCanvas" #sbCanvas></canvas>
+  </ion-card>
 
 </ion-content>
