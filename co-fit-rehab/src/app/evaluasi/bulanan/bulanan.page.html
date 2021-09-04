@@ -7,7 +7,7 @@
   </ion-header>
 
 <ion-content class="ion-padding">
-  <h5><b>Riwayat Evaluasi Bulanan</b></h5>
+ <!--  <h5><b>Riwayat Evaluasi Bulanan</b></h5>
   
 <ion-card>
     <ion-item *ngFor="let eval of Evaluation.data">
@@ -31,10 +31,37 @@
         </p>
       </ion-card-content>
     </ion-item>
-  </ion-card> 
+  </ion-card>  -->
 
-      <br />
-      <br />
+    
+  <p>Uji Jalan</p>
+  <ion-card>
+    <canvas id="ujCanvas" #ujCanvas></canvas>
+  </ion-card>
+
+  <br />
+
+  <p>Kualitas Hidup</p>
+  <ion-card>
+    <canvas id="khCanvas" #khCanvas></canvas>
+  </ion-card>
+
+  <br />
+
+  <p>Skala Sesak</p>
+  <ion-card>
+    <canvas id="ssCanvas" #ssCanvas></canvas>
+  </ion-card>
+
+  <br />
+
+  <p>Darah</p>
+  <ion-card>
+    <canvas id="drhCanvas" #drhCanvas></canvas>
+  </ion-card>
+
+  <br />
+
   <br />
 
   <ion-button type="submit" expand="block" color="dark" href="menu/evaluasi/bulanan/tambah">   Input Data Evaluasi
