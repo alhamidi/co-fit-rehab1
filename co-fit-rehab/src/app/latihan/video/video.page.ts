@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild, Pipe, PipeTransform } from '@angular/core';
+import { formatDate } from '@angular/common';
 
 import { ExerciseService } from './../../services/exercise.service';
 import { UserdataService } from './../../services/userdata.service';
@@ -19,6 +20,9 @@ export class VideoPage implements OnInit, PipeTransform {
 
   Exercise: any = [];
   public exerciseId: string;
+  startTime;
+  endTime;
+  duration;
 
 
   @ViewChild('exerciseid') exerciseidRef: ElementRef;
@@ -57,17 +61,28 @@ export class VideoPage implements OnInit, PipeTransform {
       } else {
         alert("Pilihan tidak tersedia");
       }
+
+      // start timer
+      this.startTime = new Date();
+
     });
   }
 
   onSubmit() {
+    // stop timer
+    this.endTime = new Date();
+
+    // calculate exercise duration (as timestamp)
+    this.duration = this.endTime.getTime() - this.startTime.getTime();
+
     // update patient exercise data
     this.userdataService.getPatientExerciseData().then((data) => {
       data = JSON.parse(data);
 
       data['id_latihan'] = this.Exercise.data[0].id;
-      data['waktu_mulai'] = "";
-      data['waktu_selesai'] = "";
+      data['waktu_mulai'] = formatDate(this.startTime, 'yyyy-MM-dd HH:mm:ss', 'en');
+      data['waktu_selesai'] = formatDate(this.endTime, 'yyyy-MM-dd HH:mm:ss', 'en');
+      data['durasi_latihan'] = this.duration;
 
       console.log("## updated data " + JSON.stringify(data));
 

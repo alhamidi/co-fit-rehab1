@@ -20,6 +20,9 @@ const CURRENT_EXERCISE = 'current_exercise';
 const PATIENT_EXERCISE = 'patient_exercise';
 const EXERCISE_DATA = 'exercise_data';
 const LATEST_ID = 'latest_id'; 
+
+const COOLING_DOWN_DATA = 'cooling_down_data';
+
  
 @Injectable({
   providedIn: 'root'
@@ -56,6 +59,10 @@ export class UserdataService {
 
   setLatestId(data) {
     this.storage.set(LATEST_ID, data);
+  }
+
+  setCoolingDownData(data) {
+    this.storage.set(COOLING_DOWN_DATA, JSON.stringify(data));
   }
 
   // get patient data
@@ -115,6 +122,10 @@ export class UserdataService {
 
   public async getLatestId() {
     return await this.storage.get(LATEST_ID);
+  }
+
+  public async getCoolingDownData() {
+    return await this.storage.get(COOLING_DOWN_DATA);
   }
 
   public async remove(key){

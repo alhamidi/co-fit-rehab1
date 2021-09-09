@@ -14,6 +14,7 @@ export class PatientExercise {
   tanggal: string;
   waktu_mulai: string;
   waktu_selesai: string;
+  durasi: string;
   pra_bs: string;
   pasca_bs: string;
   cd_bs: string;
@@ -23,6 +24,9 @@ export class PatientExercise {
   pra_hr: string;
   pasca_hr: string;
   cd_hr: string;
+  waktu_mulai_cd: string;
+  waktu_selesai_cd: string;
+  durasi_cd: string;
 }
 
 @Injectable({
@@ -75,13 +79,14 @@ export class PatientExerciseService {
   }
 
   updatePatientExercise(patientExercise: PatientExercise): Observable<any> {
-    this.userdataService.getLatestId().then((latestId) => {
-      let updatedData = {
-        id: latestId,
-        cd_bs: patientExercise['cd_hr'],
-        cd_sato2: patientExercise['cd_sato2'],
-        cd_hr: patientExercise['cd_hr'],
-      }
+    this.userdataService.getCoolingDownData().then((data) => {
+      let updatedData = JSON.parse(data);
+      
+      updatedData['cd_bs'] = patientExercise['cd_bs'];
+      updatedData['cd_sato2'] = patientExercise['cd_sato2'];
+      updatedData['cd_hr'] = patientExercise['cd_hr']
+
+      console.log("post data " + JSON.stringify(updatedData));
 
       this.httpClient.post(this.updateEndpoint, JSON.stringify(updatedData), this.httpOptions)
         .subscribe(data => {
@@ -103,13 +108,18 @@ export class PatientExerciseService {
   }
 
   private handleResponse(response) {
+    console.log("Response status " + response['status']);
+    console.log("last_id " + response['last_id']);
+    
     if(response['status']) {
       // store data id in local storage
-      this.userdataService.setLatestId(response['last_id']);
-
-      alert("Data latihan pasien berhasil disimpan");
+      this.userdataService.remove('latest_id').then(() => {
+        this.userdataService.setLatestId(response['last_id']);
+        alert("Data latihan pasien berhasil disimpan");
+      });
+      
     } else {
-      alert("Gagal menyimpan data latihan pasien");
+      alert("Gagal menyimpan data latihan pasien ");
     }
   }
     
