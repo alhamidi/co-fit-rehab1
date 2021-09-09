@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit,  ElementRef, ViewChild, Pipe, PipeTransform } from '@angular/core';
 import { ExerciseService } from './../../services/exercise.service';
 import { Router } from '@angular/router';
-
-import { Pipe } from '@angular/core';
-import { DomSanitizer, SafeHtml, SafeStyle, SafeScript, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 // @Pipe({
 //   name: 'safe'
 // })
-
 
 export class ExerciseData
 {
@@ -27,16 +23,23 @@ export class ExerciseData
   styleUrls: ['./pendinginan.page.scss'],
 })
 
-export class PendinginanPage implements OnInit {
+export class PendinginanPage implements OnInit, PipeTransform {
   Exercise: Array<ExerciseData> = [];
 
   constructor(
     private exerciseService: ExerciseService,
     private router: Router,
     private sanitizer: DomSanitizer,
-  ) { }
+  ) { 
+    this.sanitizer = sanitizer;
+  }
 
   ngOnInit() {
+  }
+
+  transform(url) {
+    alert("transform "+ url);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
   ionViewDidEnter() {

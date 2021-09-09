@@ -20,6 +20,7 @@ export class VideoPage implements OnInit, PipeTransform {
   Exercise: any = [];
   public exerciseId: string;
 
+
   @ViewChild('exerciseid') exerciseidRef: ElementRef;
 
   constructor(
@@ -27,7 +28,9 @@ export class VideoPage implements OnInit, PipeTransform {
     private userdataService: UserdataService, 
     private router: Router,
     private sanitizer: DomSanitizer
-  ) { }
+  ) { 
+    this.sanitizer = sanitizer;
+  }
 
   ngOnInit() {
     
