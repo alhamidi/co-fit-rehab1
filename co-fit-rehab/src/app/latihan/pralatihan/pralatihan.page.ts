@@ -29,9 +29,7 @@ export class PralatihanPage implements OnInit {
   }
 
   ngOnInit() {
-    // this.userdataService.getCurrentExercise().then((xx) => {alert("ini loh " + xx)});
   }
-
 
   onSubmit() {
     if (!this.preExerciseForm.valid) {
@@ -52,8 +50,6 @@ export class PralatihanPage implements OnInit {
         'pra_hr': this.preExerciseForm.get('pra_hr').value
       }
       this.userdataService.setPatientExerciseData(data);  
-    });
-    
+    }); 
   }
-
 }

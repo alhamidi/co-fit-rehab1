@@ -2,6 +2,8 @@ import { Component, OnInit, Inject, NgZone, ViewChild, ElementRef } from '@angul
 
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder  } from "@angular/forms";
+import { formatDate } from '@angular/common';
+
 import { MonthlyEvaluationService } from './../../services/monthly-evaluation.service';
 import { UserdataService } from './../../services/userdata.service';
 
@@ -48,16 +50,29 @@ export class BulananPage implements OnInit {
         console.log('**response ' + this.Evaluation);
 
         response['data'].forEach((item) => {
-          labels.push(item['tanggal'].split(" ")[0]);
+          let date = new Date(item['tanggal']);
+          var formattedDate = formatDate(date, 'dd MMM', 'en');
+          labels.push(formattedDate);
           datasetUjiJalan.push(item['uji_jalan']);
           datasetKualitasHidup.push(item['kualitas_hidup']);
           datasetSkalaSesak.push(item['skala_sesak']);
           datasetDarah.push(item['darah']);
         });
 
-        // create line chart
-        this.ujChart = new Chart(this.ujCanvas.nativeElement, {
+    if(this.ujChart) {
+      this.ujChart.destroy();
+    }
+
+    // create line chart
+    this.ujChart = new Chart(this.ujCanvas.nativeElement, {
       type: "line",
+      options: {
+        plugins: {
+            legend: {
+                display: false,
+            }
+        }
+      },
       data: {
         labels: labels,
         datasets: [
@@ -88,9 +103,20 @@ export class BulananPage implements OnInit {
       }
     });
 
-        // create line chart
-        this.khChart = new Chart(this.khCanvas.nativeElement, {
+    if(this.khChart) {
+      this.khChart.destroy();
+    }
+
+    // create line chart
+    this.khChart = new Chart(this.khCanvas.nativeElement, {
       type: "line",
+      options: {
+        plugins: {
+            legend: {
+                display: false,
+            }
+        }
+      },
       data: {
         labels: labels,
         datasets: [
@@ -121,9 +147,20 @@ export class BulananPage implements OnInit {
       }
     });
 
-        // create line chart
-        this.ssChart = new Chart(this.ssCanvas.nativeElement, {
+    if(this.ssChart) {
+      this.ssChart.destroy();
+    }
+
+    // create line chart
+    this.ssChart = new Chart(this.ssCanvas.nativeElement, {
       type: "line",
+      options: {
+        plugins: {
+            legend: {
+                display: false,
+            }
+        }
+      },
       data: {
         labels: labels,
         datasets: [
@@ -154,9 +191,20 @@ export class BulananPage implements OnInit {
       }
     });
 
-        // create line chart
-        this.drhChart = new Chart(this.drhCanvas.nativeElement, {
+    if(this.drhChart) {
+      this.drhChart.destroy();
+    }
+
+    // create line chart
+    this.drhChart = new Chart(this.drhCanvas.nativeElement, {
       type: "line",
+      options: {
+        plugins: {
+            legend: {
+                display: false,
+            }
+        }
+      },
       data: {
         labels: labels,
         datasets: [

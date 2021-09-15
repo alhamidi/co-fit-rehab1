@@ -1,17 +1,17 @@
 <ion-content [fullscreen]="true" class="ion-padding">
 
-   <ion-list>
-    <ion-item *ngFor="let exercise of Exercise.data">
-      <ion-label>
-        <h1>Pendinginan</h1>
-        <br />
-
-        <iframe [src]="exercise.url | transformUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </ion-label>
+ <ion-list>
+  <ion-item *ngFor="let exercise of Exercise.data">
+    <ion-label>
+      <h1>Pendinginan</h1>
       <br />
-    </ion-item>
-  </ion-list>
 
-  <ion-button type="submit" expand="block" color="dark" (click)="onSubmit()">Berhenti</ion-button>
+      <iframe [src]="exercise.url | transformUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </ion-label>
+    <br />
+  </ion-item>
+</ion-list>
+
+<ion-button type="submit" expand="block" color="dark" (click)="onSubmit()">Berhenti</ion-button>
 
 </ion-content>

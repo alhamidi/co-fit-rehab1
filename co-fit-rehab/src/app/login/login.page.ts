@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
     public formBuilder: FormBuilder,
     private zone: NgZone,
     private patientService: PatientService    
-  ) { 
+    ) { 
     this.loginForm = this.formBuilder.group({
       phonenumber: [''],
       password: [''],
@@ -33,14 +33,10 @@ export class LoginPage implements OnInit {
       return false;
     } else {
       this.patientService.login(this.loginForm.value)
-        .subscribe((response) => {
-          this.zone.run(() => {
-            // this.loginForm.reset();
-            // this.router.navigate(['/menu/latihan']);
-          })
-        });
+      .subscribe((response) => {
+        this.zone.run(() => {})
+      });
     }
   }
-
 }
 

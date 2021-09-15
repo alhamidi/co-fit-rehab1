@@ -2,6 +2,8 @@ import { Component, OnInit, Inject, NgZone, ViewChild, ElementRef } from '@angul
 
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder  } from "@angular/forms";
+import { formatDate } from '@angular/common';
+
 import { WeeklyEvaluationService } from './../../services/weekly-evaluation.service';
 import { UserdataService } from './../../services/userdata.service';
 
@@ -28,7 +30,7 @@ export class MingguanPage implements OnInit {
     private evalService: WeeklyEvaluationService,
     private userdataService: UserdataService,
     private router: Router
-  ) { Chart.register(...registerables); }
+    ) { Chart.register(...registerables); }
 
   ngOnInit() {
   }
@@ -45,20 +47,33 @@ export class MingguanPage implements OnInit {
         console.log('**response ' + this.Evaluation);
 
         response['data'].forEach((item) => {
-          labels.push(item['tanggal'].split(" ")[0]);
+          let date = new Date(item['tanggal']);
+          var formattedDate = formatDate(date, 'dd MMM', 'en');
+          labels.push(formattedDate);
           datasetRHR.push(item['rhr']);
           datasetBFI.push(item['bfi']);
           datasetSTS.push(item['sts30detik']);
         });
 
-        // create line chart
-        this.rhrChart = new Chart(this.rhrCanvas.nativeElement, {
+        if(this.rhrChart) {
+          this.rhrChart.destroy();
+        }
+
+    // create line chart
+    this.rhrChart = new Chart(this.rhrCanvas.nativeElement, {
       type: "line",
+      options: {
+        plugins: {
+          legend: {
+            display: false,
+          }
+        }
+      },
       data: {
         labels: labels,
         datasets: [
         {
-          label: "RHR", // BFI
+          label: "Detak Jantung Istirahat", // BFI
           fill: false,
           // lineTension: 0.1,
           backgroundColor: "rgba(225,0,0,0.4)",
@@ -84,14 +99,25 @@ export class MingguanPage implements OnInit {
       }
     });
 
-        // create line chart
-        this.bfiChart = new Chart(this.bfiCanvas.nativeElement, {
+    if(this.bfiChart) {
+      this.bfiChart.destroy();
+    }
+
+    // create line chart
+    this.bfiChart = new Chart(this.bfiCanvas.nativeElement, {
       type: "line",
+      options: {
+        plugins: {
+          legend: {
+            display: false,
+          }
+        }
+      },
       data: {
         labels: labels,
         datasets: [
         {
-          label: "BFI", // BFI
+          label: "Tingkat Kelelahan", // BFI
           fill: false,
           // lineTension: 0.1,
           backgroundColor: "rgba(225,0,0,0.4)",
@@ -117,9 +143,20 @@ export class MingguanPage implements OnInit {
       }
     });
 
-        // create line chart
-        this.stsChart = new Chart(this.stsCanvas.nativeElement, {
+    if(this.stsChart) {
+      this.stsChart.destroy();
+    }
+
+    // create line chart
+    this.stsChart = new Chart(this.stsCanvas.nativeElement, {
       type: "line",
+      options: {
+        plugins: {
+          legend: {
+            display: false,
+          }
+        }
+      },
       data: {
         labels: labels,
         datasets: [
@@ -149,10 +186,8 @@ export class MingguanPage implements OnInit {
         ]
       }
     });
-
-
-      })  
-    });
-  }
+  })  
+});
+}
 }
 

@@ -19,20 +19,20 @@ export class ListvideoPage implements OnInit {
     private exerciseService: ExerciseService,
     private userdataService: UserdataService,
     private router: Router
-  ) { }
+    ) { }
 
   ngOnInit() {
   }
 
   ionViewDidEnter() {
-     this.userdataService.getCurrentExercise().then((exerciseType) => {
-      this.exerciseService.getExercises(exerciseType).subscribe((response) => {
-        this.Exercises = response;
-      })
-    });
-  }
+   this.userdataService.getCurrentExercise().then((exerciseType) => {
+    this.exerciseService.getExercises(exerciseType).subscribe((response) => {
+      this.Exercises = response;
+    })
+  });
+ }
 
-  onClick(data){
+ onClick(data){
     // store exercise data
     this.userdataService.setExerciseData(data);
 
@@ -40,5 +40,4 @@ export class ListvideoPage implements OnInit {
     this.router.navigate(['/menu/latihan/pralatihan']);
 
   }
-
 }

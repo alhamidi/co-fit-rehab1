@@ -1,47 +1,12 @@
-  <ion-header [translucent]="true">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="menu/latihan" text="Kembali"></ion-back-button>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="menu/latihan" text="Kembali"></ion-back-button>
     </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content class="ion-padding">
-  <!-- <h5><b>Statistik Latihan</b></h5> -->
-  
-  <!-- <ion-card>
-    <ion-item *ngFor="let exercise of Exercises.data">
-        
-      <ion-card-content>
-        <p>
-          Tanggal: {{exercise.tanggal}}
-        </p>
-        <br />
-
-        <p><strong>Pra Latihan</strong></p>
-        <p>Skala Borg: {{exercise.pra_bs}}</p>
-        <p>Saturasi Oksigen: {{exercise.pra_sato2}}</p>
-        <p>Detak Jantung: {{exercise.pra_hr}}</p>
-
-        <br />
-        
-        <p><strong>Pasca Latihan</strong></p>
-        <p>Skala Borg: {{exercise.pasca_bs}}</p>
-        <p>Saturasi Oksigen: {{exercise.pasca_sato2}}</p>
-        <p>Detak Jantung: {{exercise.pasca_hr}}</p>
-
-        <br />
-
-        <p><strong>Pasca Pendinginan</strong></p>
-        <p>Skala Borg: {{exercise.cd_bs}}</p>
-        <p>Saturasi Oksigen: {{exercise.cd_sato2}}</p>
-        <p>Detak Jantung: {{exercise.cd_hr}}</p>
-
-      </ion-card-content>
-
-    </ion-item>
-  </ion-card>  --> 
-
   <p>Denyut Jantung</p>
   <ion-card>
     <canvas id="hrCanvas" #hrCanvas></canvas>

@@ -21,9 +21,9 @@ export class PascapendinginanPage implements OnInit {
     private zone: NgZone,
     private patientExerciseService: PatientExerciseService,
     private userdataService: UserdataService    
-  ) { 
+    ) { 
 
-this.postCoolingdownForm = this.formBuilder.group({
+    this.postCoolingdownForm = this.formBuilder.group({
       cd_bs: [''],
       cd_sato2: [''],
       cd_hr: ['']
@@ -39,13 +39,12 @@ this.postCoolingdownForm = this.formBuilder.group({
       return false;
     } else {
       this.patientExerciseService.updatePatientExercise(this.postCoolingdownForm.value)
-        .subscribe((response) => {
-          this.zone.run(() => {
-            this.postCoolingdownForm.reset();
-            this.router.navigate(['/menu/latihan/']);
-          })
-        });
+      .subscribe((response) => {
+        this.zone.run(() => {
+          this.postCoolingdownForm.reset();
+          this.router.navigate(['/menu/latihan/']);
+        })
+      });
     }
   }
-
 }

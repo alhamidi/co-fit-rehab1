@@ -45,19 +45,19 @@ export class MonthlyEvaluationService {
     console.log("**** " + JSON.stringify(postData));
     
     this.httpClient.post(this.endpoint, JSON.stringify(postData), this.httpOptions)
-        .subscribe(data => {
-          console.log(data);
-         }, error => {
-          console.log(error);
-        });
+    .subscribe(data => {
+      console.log(data);
+    }, error => {
+      console.log(error);
+    });
     return of (1);
   }
 
   getEvaluations(patientId): Observable<MonthlyEval[]> {
     return this.httpClient.get<MonthlyEval[]>(this.endpoint + '?patient_id=' + patientId)
-      .pipe(
-        tap(_ => console.log(`Monthly Evaluation fetched patient id: ${patientId}`)),
-        catchError(this.handleError<MonthlyEval[]>(`Get monthly evaluation patient id=${patientId}`))
+    .pipe(
+      tap(_ => console.log(`Monthly Evaluation fetched patient id: ${patientId}`)),
+      catchError(this.handleError<MonthlyEval[]>(`Get monthly evaluation patient id=${patientId}`))
       );
   }
 

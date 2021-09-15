@@ -1,39 +1,12 @@
-  <ion-header [translucent]="true">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="menu/evaluasi" text="Kembali"></ion-back-button>
-    </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="menu/evaluasi" text="Kembali"></ion-back-button>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
-<ion-content class="ion-padding">
- <!--  <h5><b>Riwayat Evaluasi Bulanan</b></h5>
-  
-<ion-card>
-    <ion-item *ngFor="let eval of Evaluation.data">
-        
-      <ion-card-content>
-        <p>
-          Tanggal: {{eval.tanggal}}
-        </p>
-        <br />
-        <p>
-          Uji Jalan: {{eval.uji_jalan}}
-        </p>
-        <p>
-          Kualitas Hidup: {{eval.kualitas_hidup}}
-        </p>
-        <p>
-          Skala Sesak: {{eval.skala_sesak}}
-        </p>
-        <p>
-          Darah: {{eval.darah}}
-        </p>
-      </ion-card-content>
-    </ion-item>
-  </ion-card>  -->
-
-    
+<ion-content class="ion-padding">   
   <p>Uji Jalan</p>
   <ion-card>
     <canvas id="ujCanvas" #ujCanvas></canvas>
@@ -64,7 +37,7 @@
 
   <br />
 
-  <ion-button type="submit" expand="block" color="dark" href="menu/evaluasi/bulanan/tambah">   Input Data Evaluasi
+  <ion-button type="submit" expand="block" color="dark" href="menu/evaluasi/bulanan/tambah">Input Data Evaluasi
   </ion-button>
 
 

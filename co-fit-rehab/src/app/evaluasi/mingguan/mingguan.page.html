@@ -1,38 +1,12 @@
-  <ion-header [translucent]="true">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="menu/evaluasi" text="Kembali"></ion-back-button>
-    </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="menu/evaluasi" text="Kembali"></ion-back-button>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content class="ion-padding">
-  <!-- <h5><b>Riwayat Evaluasi Mingguan</b></h5>
-  
-  <ion-card>
-    <ion-item *ngFor="let eval of Evaluation.data">
-        
-      <ion-card-content>
-        <p>
-          Tanggal: {{eval.tanggal}}
-        </p>
-        <br />
-        <p>
-          Detak Jantung Istirahat: {{eval.rhr}}
-        </p>
-        <p>
-          Tingkat Kelelahan: {{eval.bfi}}
-        </p>
-        <p>
-          STS 30 detik: {{eval.sts30detik}}
-        </p>
-      </ion-card-content>
-
-      <br />
-      <br />
-    </ion-item>
-  </ion-card>   -->
-
   <p>Denyut Jantung Istirahat</p>
   <ion-card>
     <canvas id="rhrCanvas" #rhrCanvas></canvas>

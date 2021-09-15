@@ -45,12 +45,7 @@ export class PatientExerciseService {
   constructor(
     private httpClient: HttpClient,
     private userdataService: UserdataService,
-    // private patientData: PatientExercise
-  ) { }
-
-  setCurrentExercise(data) {
-    
-  }
+    ) { }
 
   createPatientExercise(patientExercise: PatientExercise): Observable<any> {
     var today = formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'en');
@@ -66,12 +61,12 @@ export class PatientExerciseService {
       console.log("post data " + JSON.stringify(postData));
 
       this.httpClient.post(this.endpoint, JSON.stringify(postData), this.httpOptions)
-        .subscribe(data => {
-          this.handleResponse(data);
-          console.log(data);
-         }, error => {
-          console.log(error);
-        });
+      .subscribe(data => {
+        this.handleResponse(data);
+        console.log(data);
+      }, error => {
+        console.log(error);
+      });
       
     });
     
@@ -89,21 +84,21 @@ export class PatientExerciseService {
       console.log("post data " + JSON.stringify(updatedData));
 
       this.httpClient.post(this.updateEndpoint, JSON.stringify(updatedData), this.httpOptions)
-        .subscribe(data => {
-          alert("Data latihan pasien berhasil simpan");
-          console.log(data);
-         }, error => {
-          console.log(error);
-        });
+      .subscribe(data => {
+        alert("Data latihan pasien berhasil simpan");
+        console.log(data);
+      }, error => {
+        console.log(error);
+      });
     });
     return of (1);
   }
 
   getPatientExercises(patientId): Observable<PatientExercise[]> {
     return this.httpClient.get<PatientExercise[]>(this.endpoint + '?patient_id=' + patientId)
-      .pipe(
-        tap(_ => console.log(`Patient Exercises fetched patient id: ${patientId}`)),
-        catchError(this.handleError<PatientExercise[]>(`Get patient exercises for patient id=${patientId}`))
+    .pipe(
+      tap(_ => console.log(`Patient Exercises fetched patient id: ${patientId}`)),
+      catchError(this.handleError<PatientExercise[]>(`Get patient exercises for patient id=${patientId}`))
       );
   }
 
@@ -122,7 +117,7 @@ export class PatientExerciseService {
       alert("Gagal menyimpan data latihan pasien ");
     }
   }
-    
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);

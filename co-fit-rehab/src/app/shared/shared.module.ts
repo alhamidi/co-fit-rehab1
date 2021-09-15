@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { TransformUrlPipe } from './pipes/transform-url.pipe';
 
 
-
 @NgModule({
   declarations: [
     TransformUrlPipe

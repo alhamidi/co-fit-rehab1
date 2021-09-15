@@ -5,9 +5,6 @@ import { UserdataService } from './../../services/userdata.service';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 
-// @Pipe({
-//   name: 'safe'
-// })
 
 export class ExerciseData
 {
@@ -36,7 +33,7 @@ export class PendinginanPage implements OnInit, PipeTransform {
     private router: Router,
     private userdataService: UserdataService, 
     private sanitizer: DomSanitizer,
-  ) { 
+    ) { 
     this.sanitizer = sanitizer;
   }
 
@@ -76,6 +73,6 @@ export class PendinginanPage implements OnInit, PipeTransform {
     });
 
      // move to post cooling down page
-    this.router.navigate(['/menu/latihan/pascapendinginan']);
-  }
-}
+     this.router.navigate(['/menu/latihan/pascapendinginan']);
+   }
+ }
