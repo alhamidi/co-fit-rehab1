@@ -37,6 +37,7 @@ export class PatientExerciseService {
 
   endpoint = 'https://localhost/api/patient_exercise/';
   updateEndpoint = 'https://localhost/api/patient_exercise/?type=update';
+  updateLevelEndpoint = 'https://localhost/api/endurance_level/';
 
   httpOptions = {
     headers: new HttpHeaders()
@@ -64,6 +65,12 @@ export class PatientExerciseService {
       .subscribe(data => {
         this.handleResponse(data);
         console.log(data);
+
+        this.userdataService.getCurrentExercise().then((currentExercise) => {
+          if(currentExercise == 2) { // endurance exercise
+            this.updateLevel(postData['id_pasien']);
+          }
+        })
       }, error => {
         console.log(error);
       });
@@ -100,6 +107,33 @@ export class PatientExerciseService {
       tap(_ => console.log(`Patient Exercises fetched patient id: ${patientId}`)),
       catchError(this.handleError<PatientExercise[]>(`Get patient exercises for patient id=${patientId}`))
       );
+  }
+
+  updateLevel(patientId): Observable<any> {
+    let updateLevelData = {"id_pasien": patientId};
+
+    console.log("update level data " + JSON.stringify(updateLevelData));
+
+    this.httpClient.post(this.updateLevelEndpoint, JSON.stringify(updateLevelData), this.httpOptions)
+    .subscribe(data => {
+      console.log("Update level response data: ", data);
+
+      this.userdataService.getEnduranceLevel().then((currentLevel) => {
+        // store new endurance level
+        this.userdataService.setEnduranceLevel(parseInt(data['current_endurance_level']));
+
+        // show notification if level update
+        if (data['level_up']) {
+          alert("Selamat! Level latihan endurans Anda sudah meningkat");
+        } else if (data['level_down']) {
+          alert("Level latihan endurans Anda telah diturunkan");
+        }
+      });
+    }, error => {
+      console.log("Update level error message: ", error);
+    });
+    
+    return of (1);
   }
 
   private handleResponse(response) {

@@ -8,7 +8,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item (click)="onClick(exercise)" *ngFor="let exercise of Exercises.data">
+    <ion-item (click)="onClick(exercise)" *ngFor="let exercise of Exercises">
       <ion-thumbnail slot="start"><img src="assets/img/video-icon.png"></ion-thumbnail>
       <ion-label>{{exercise.nama| titlecase}}</ion-label>
       <br />

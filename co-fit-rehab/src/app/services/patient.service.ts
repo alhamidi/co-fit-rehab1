@@ -57,7 +57,7 @@ export class PatientService {
   }
 
   storePatientData(data) {
-    this.userdataService.setPatientData(data["id"], data["nama"]);
+    this.userdataService.setPatientData(data["id"], data["nama"], data["endurance_level"]);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

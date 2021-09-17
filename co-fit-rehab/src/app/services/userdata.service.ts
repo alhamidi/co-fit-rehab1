@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 
 import * as CordovaSQLiteDriver from 'localforage-cordovasqlitedriver'
- 
+
 const PATIENT_ID = 'patient_id';
 const PATIENT_NAME = 'patient_name';
 const PATIENT_CODE = 'patient_code';
 const NO_RM = 'no_rm';
+const ENDURANCE_LEVEL = 'endurance_level';
 
 const PRA_HR = 'pra_hr';
 const PRA_SATO2 = 'pra_sato2';
@@ -23,7 +24,7 @@ const LATEST_ID = 'latest_id';
 
 const COOLING_DOWN_DATA = 'cooling_down_data';
 
- 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,15 +35,16 @@ export class UserdataService {
   constructor(private storage: Storage) {
     this.init();
   }
- 
+  
   async init() {
     await this.storage.defineDriver(CordovaSQLiteDriver);
     await this.storage.create();
   }
 
-  setPatientData(patientId, patientName) {
+  setPatientData(patientId, patientName, enduranceLevel) {
     this.storage.set(PATIENT_ID, patientId);
     this.storage.set(PATIENT_NAME, patientName);
+    this.storage.set(ENDURANCE_LEVEL, enduranceLevel)
   }
 
   setPatientExerciseData(data) {
@@ -65,6 +67,10 @@ export class UserdataService {
     this.storage.set(COOLING_DOWN_DATA, JSON.stringify(data));
   }
 
+  setEnduranceLevel(data) {
+    this.storage.set(ENDURANCE_LEVEL, JSON.stringify(data));
+  }
+
   // get patient data
   public async getPatientId() {
     return await this.storage.get(PATIENT_ID);
@@ -80,6 +86,10 @@ export class UserdataService {
 
   public async getNoRm() {
     return await this.storage.get(NO_RM);
+  }
+
+  public async getEnduranceLevel() {
+    return await this.storage.get(ENDURANCE_LEVEL);
   }
 
   // get patient exercise data

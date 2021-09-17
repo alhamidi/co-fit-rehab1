@@ -27,7 +27,9 @@ export class ListvideoPage implements OnInit {
   ionViewDidEnter() {
    this.userdataService.getCurrentExercise().then((exerciseType) => {
     this.exerciseService.getExercises(exerciseType).subscribe((response) => {
-      this.Exercises = response;
+      this.userdataService.getEnduranceLevel().then((enduranceLevel) => {
+        this.Exercises = response["data"].slice(0, enduranceLevel);  
+      })
     })
   });
  }
