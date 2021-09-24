@@ -19,7 +19,7 @@ export class Exercise {
 
 export class ExerciseService {
 
-  endpoint = 'https://localhost/api/exercise/';
+  endpoint = 'https://cofitrehab-ui.org/api/exercise/';
 
   httpOptions = {
     headers: new HttpHeaders()

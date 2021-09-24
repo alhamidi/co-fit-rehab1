@@ -21,7 +21,7 @@ export class MonthlyEval {
 
 export class MonthlyEvaluationService {
 
-  endpoint = 'https://localhost/api/monthly_evaluation/';
+  endpoint = 'https://cofitrehab-ui.org/api/monthly_evaluation/';
 
   httpOptions = {
     headers: new HttpHeaders()

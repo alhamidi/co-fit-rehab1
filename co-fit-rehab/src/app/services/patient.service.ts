@@ -21,7 +21,7 @@ export class Patient {
 
 export class PatientService {
 
-  endpoint = 'https://localhost/api/patient/';
+  endpoint = 'https://cofitrehab-ui.org/api/patient/';
 
   httpOptions = {
     headers: new HttpHeaders()
