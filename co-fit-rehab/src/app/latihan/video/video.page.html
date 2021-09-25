@@ -12,10 +12,11 @@
          <ion-label>
             <h2><strong>{{exercise.nama | titlecase}}</strong></h2>
             <ion-label #exerciseid id="exerciseid" hidden>{{exercise.id}}</ion-label>
-
             <br />
 
-            <iframe [src]="exercise.url | transformUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div align="center">
+               <iframe [src]="exercise.url | transformUrl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+            </div>
 
          </ion-label>
          <br />
