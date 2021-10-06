@@ -2,28 +2,26 @@ import { Component, OnInit, Inject, NgZone } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder  } from "@angular/forms";
-import { MonthlyEvaluationService } from './../../../services/monthly-evaluation.service';
+import { DailyEvaluationService } from './../../../services/daily-evaluation.service';
 
 @Component({
   selector: 'app-tambah',
   templateUrl: './tambah.page.html',
   styleUrls: ['./tambah.page.scss'],
 })
+
 export class TambahPage implements OnInit {
 
-  monthlyEvalForm: FormGroup;
+  dailyEvalForm: FormGroup;
 
   constructor(
     private router: Router,
     public formBuilder: FormBuilder,
     private zone: NgZone,
-    private monthlyEvalService: MonthlyEvaluationService    
+    private dailyEvalService: DailyEvaluationService    
   ) { 
-    this.monthlyEvalForm = this.formBuilder.group({
-      uji_jalan: [''],
-      skala_sesak: [''],
-      sistolik: [''],
-      diastolik: [''],
+    this.dailyEvalForm = this.formBuilder.group({
+      rhr: [''],
     })
   }
 
@@ -31,14 +29,14 @@ export class TambahPage implements OnInit {
   }
 
   onSubmit() {
-    if (!this.monthlyEvalForm.valid) {
+    if (!this.dailyEvalForm.valid) {
       return false;
     } else {
-      this.monthlyEvalService.submitMonthlyEval(this.monthlyEvalForm.value)
+      this.dailyEvalService.submitDailyEval(this.dailyEvalForm.value)
         .subscribe((response) => {
           this.zone.run(() => {
-            this.monthlyEvalForm.reset();
-            this.router.navigate(['/menu/evaluasi/bulanan']);
+            this.dailyEvalForm.reset();
+            this.router.navigate(['/menu/evaluasi/harian']);
           })
         });
     }

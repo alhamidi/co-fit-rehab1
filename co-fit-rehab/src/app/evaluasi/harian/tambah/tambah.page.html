@@ -1,0 +1,22 @@
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="menu/evaluasi" text="Kembali"></ion-back-button>
+    </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content class="ion-padding">
+  <h5><b>Evaluasi Harian</b></h5>
+  <br />
+
+  <form [formGroup]="dailyEvalForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Denyut Jantung Istirahat</ion-label>
+      <ion-input type="number" placeholder="" formControlName="rhr" required></ion-input>
+    </ion-item>
+
+    <br /><br />
+     <ion-button type="submit" expand="block" color="dark">Submit</ion-button>
+  </form>
+</ion-content>

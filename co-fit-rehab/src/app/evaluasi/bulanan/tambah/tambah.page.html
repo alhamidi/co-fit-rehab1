@@ -13,22 +13,22 @@
   <form [formGroup]="monthlyEvalForm" (ngSubmit)="onSubmit()">
     <ion-item>
       <ion-label position="floating">Uji Jalan 6 Menit</ion-label>
-      <ion-input type="number" placeholder="contoh: 60" formControlName="uji_jalan" required></ion-input>
+      <ion-input type="number" placeholder="dalam meter" formControlName="uji_jalan" required></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Kualitas Hidup</ion-label>
-      <ion-input type="number" placeholder="contoh: 3.8" formControlName="kualitas_hidup" required></ion-input>
+      <ion-label position="floating">Skala Sesak mMRC</ion-label>
+      <ion-input type="number" placeholder="Skala: 0-4" formControlName="skala_sesak" required></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Skala Sesak</ion-label>
-      <ion-input type="number" placeholder="contoh: 5" formControlName="skala_sesak" required></ion-input>
+      <ion-label position="floating">Tekanan Darah Sistolik</ion-label>
+      <ion-input type="number" placeholder="Skala: 70-250" formControlName="sistolik" required></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Darah</ion-label>
-      <ion-input type="number" placeholder="contoh: 5" formControlName="darah" required></ion-input>
+      <ion-label position="floating">Tekanan Darah Diastolik</ion-label>
+      <ion-input type="number" placeholder="Skala: 0:120" formControlName="diastolik" required></ion-input>
     </ion-item>
 
     <br /><br />

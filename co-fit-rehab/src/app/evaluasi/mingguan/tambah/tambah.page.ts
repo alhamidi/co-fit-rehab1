@@ -21,7 +21,6 @@ export class TambahPage implements OnInit {
     private weeklyEvalService: WeeklyEvaluationService    
   ) { 
     this.weeklyEvalForm = this.formBuilder.group({
-      rhr: [''],
       bfi: [''],
       sts30detik: [''],
     })

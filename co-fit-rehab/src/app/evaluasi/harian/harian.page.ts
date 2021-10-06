@@ -4,28 +4,26 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder  } from "@angular/forms";
 import { formatDate } from '@angular/common';
 
-import { MonthlyEvaluationService } from './../../services/monthly-evaluation.service';
+import { DailyEvaluationService } from './../../services/daily-evaluation.service';
 import { UserdataService } from './../../services/userdata.service';
 
 import { Chart, registerables  } from "chart.js";
 
 @Component({
-  selector: 'app-bulanan',
-  templateUrl: './bulanan.page.html',
-  styleUrls: ['./bulanan.page.scss'],
+  selector: 'app-harian',
+  templateUrl: './harian.page.html',
+  styleUrls: ['./harian.page.scss'],
 })
 
-export class BulananPage implements OnInit {
-  @ViewChild("ujCanvas") ujCanvas: ElementRef;
-  @ViewChild("ssCanvas") ssCanvas: ElementRef;
+export class HarianPage implements OnInit {
+  @ViewChild("rhrCanvas") rhrCanvas: ElementRef;
 
   Evaluation: any = [];
 
-  private ujChart: Chart;
-  private ssChart: Chart;
-
+  private rhrChart: Chart;
+  
   constructor(
-    private evalService: MonthlyEvaluationService,
+    private evalService: DailyEvaluationService,
     private userdataService: UserdataService,
     private router: Router
   ) { Chart.register(...registerables); }
@@ -35,9 +33,8 @@ export class BulananPage implements OnInit {
 
   ionViewDidEnter() {
     var labels = [];
-    var datasetUjiJalan = [];
-    var datasetSkalaSesak = [];
-
+    var datasetRhr = [];
+    
     this.userdataService.getPatientId().then((patientId) => {
       this.evalService.getEvaluations(patientId).subscribe((response) => {
         this.Evaluation = response;
@@ -47,16 +44,15 @@ export class BulananPage implements OnInit {
           let date = new Date(item['tanggal']);
           var formattedDate = formatDate(date, 'dd MMM', 'en');
           labels.push(formattedDate);
-          datasetUjiJalan.push(item['uji_jalan']);
-          datasetSkalaSesak.push(item['skala_sesak']);
+          datasetRhr.push(item['rhr']);
         });
 
-    if(this.ujChart) {
-      this.ujChart.destroy();
+    if(this.rhrChart) {
+      this.rhrChart.destroy();
     }
 
     // create line chart
-    this.ujChart = new Chart(this.ujCanvas.nativeElement, {
+    this.rhrChart = new Chart(this.rhrCanvas.nativeElement, {
       type: "line",
       options: {
         plugins: {
@@ -69,7 +65,7 @@ export class BulananPage implements OnInit {
         labels: labels,
         datasets: [
         {
-          label: "Uji Jalan", 
+          label: "Denyut Jantung Istirahat", 
           fill: false,
           // lineTension: 0.1,
           backgroundColor: "rgba(225,0,0,0.4)",
@@ -88,51 +84,7 @@ export class BulananPage implements OnInit {
           pointRadius: 1,
           pointHitRadius: 5,
           // notice the gap in the data and the spanGaps: true
-          data: datasetUjiJalan,
-          spanGaps: true,
-        }
-        ]
-      }
-    });
-
-    if(this.ssChart) {
-      this.ssChart.destroy();
-    }
-
-    // create line chart
-    this.ssChart = new Chart(this.ssCanvas.nativeElement, {
-      type: "line",
-      options: {
-        plugins: {
-            legend: {
-                display: false,
-            }
-        }
-      },
-      data: {
-        labels: labels,
-        datasets: [
-        {
-          label: "Skala Sesak", 
-          fill: false,
-          // lineTension: 0.1,
-          backgroundColor: "rgba(225,0,0,0.4)",
-          borderColor: "red", // The main line color
-          borderCapStyle: 'square',
-          borderDash: [], // try [5, 15] for instance
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: "black",
-          pointBackgroundColor: "white",
-          pointBorderWidth: 1,
-          pointHoverRadius: 8,
-          pointHoverBackgroundColor: "yellow",
-          pointHoverBorderColor: "brown",
-          pointHoverBorderWidth: 2,
-          pointRadius: 1,
-          pointHitRadius: 5,
-          // notice the gap in the data and the spanGaps: true
-          data: datasetSkalaSesak,
+          data: datasetRhr,
           spanGaps: true,
         }
         ]

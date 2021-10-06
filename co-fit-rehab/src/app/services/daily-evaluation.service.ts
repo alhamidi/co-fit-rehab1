@@ -7,11 +7,8 @@ import { catchError, tap } from 'rxjs/operators';
 import { formatDate } from '@angular/common';
 
 
-export class MonthlyEval {
-  uji_jalan: string;
-  skala_sesak: string;
-  sistolik: string;
-  diastolik: string;
+export class DailyEval {
+  rhr: string;
 }
 
 @Injectable({
@@ -19,10 +16,10 @@ export class MonthlyEval {
 })
 
 
-export class MonthlyEvaluationService {
+export class DailyEvaluationService {
 
-  // endpoint = 'https://cofitrehab-ui.org/api/monthly_evaluation/';
-  endpoint = 'https://localhost/api/monthly_evaluation/';
+  // endpoint = 'https://cofitrehab-ui.org/api/daily_evaluation/';
+  endpoint = 'https://localhost/api/daily_evaluation/';
 
   httpOptions = {
     headers: new HttpHeaders()
@@ -30,17 +27,14 @@ export class MonthlyEvaluationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  submitMonthlyEval(data: MonthlyEval): Observable<any> {
+  submitDailyEval(data: DailyEval): Observable<any> {
     var today = formatDate(new Date(), 'yyyy-MM-dd HH:mm:ss', 'en');
     console.log("today " + today);
 
     let postData = {
       id_pasien: 1,
       tanggal: today,
-      uji_jalan: data['uji_jalan'],
-      skala_sesak: data['skala_sesak'],
-      sistolik: data['sistolik'],
-      diastolik: data['diastolik'],
+      rhr: data['rhr']
     }
 
     console.log("**** " + JSON.stringify(postData));
@@ -54,11 +48,11 @@ export class MonthlyEvaluationService {
     return of (1);
   }
 
-  getEvaluations(patientId): Observable<MonthlyEval[]> {
-    return this.httpClient.get<MonthlyEval[]>(this.endpoint + '?patient_id=' + patientId)
+  getEvaluations(patientId): Observable<DailyEval[]> {
+    return this.httpClient.get<DailyEval[]>(this.endpoint + '?patient_id=' + patientId)
     .pipe(
-      tap(_ => console.log(`Monthly Evaluation fetched patient id: ${patientId}`)),
-      catchError(this.handleError<MonthlyEval[]>(`Get monthly evaluation patient id=${patientId}`))
+      tap(_ => console.log(`Daily Evaluation fetched patient id: ${patientId}`)),
+      catchError(this.handleError<DailyEval[]>(`Get daily evaluation patient id=${patientId}`))
       );
   }
 
