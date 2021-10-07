@@ -29,6 +29,12 @@ export class PatientExercise {
   durasi_cd: string;
 }
 
+export class PatientExerciseData {
+  breathing: PatientExercise[];
+  endurance: PatientExercise[];
+  strength: PatientExercise[];
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -105,11 +111,19 @@ export class PatientExerciseService {
     return of (1);
   }
 
-  getPatientExercises(patientId): Observable<PatientExercise[]> {
-    return this.httpClient.get<PatientExercise[]>(this.endpoint + '?patient_id=' + patientId)
+  // getPatientExercises(patientId): Observable<PatientExercise[]> {
+  //   return this.httpClient.get<PatientExercise[]>(this.endpoint + '?patient_id=' + patientId)
+  //   .pipe(
+  //     tap(_ => console.log(`Patient Exercises fetched patient id: ${patientId}`)),
+  //     catchError(this.handleError<PatientExercise[]>(`Get patient exercises for patient id=${patientId}`))
+  //     );
+  // }
+
+  getPatientExercises(patientId): Observable<PatientExerciseData> {
+    return this.httpClient.get<PatientExerciseData>(this.endpoint + '?patient_id=' + patientId)
     .pipe(
       tap(_ => console.log(`Patient Exercises fetched patient id: ${patientId}`)),
-      catchError(this.handleError<PatientExercise[]>(`Get patient exercises for patient id=${patientId}`))
+      catchError(this.handleError<PatientExerciseData>(`Get patient exercises for patient id=${patientId}`))
       );
   }
 
