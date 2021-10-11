@@ -12,8 +12,10 @@
 
   <form [formGroup]="weeklyEvalForm" (ngSubmit)="onSubmit()">
     <ion-item>
-      <ion-label position="floating">Tingkat Kelelahan (BFI)</ion-label>
-      <ion-input type="number" placeholder="Skala: 0-10" formControlName="bfi" required></ion-input>
+      <ion-label>Tingkat Kelelahan (BFI)</ion-label>
+      <ion-select #bfiSelect [value]="currentValue" [selectedText]="currentValue" placeholder="Pilih" cancel-text="Batal" ok-text="Pilih" formControlName="bfi" required>
+        <ion-select-option *ngFor="let bfi of bfiScale">{{ bfi }}</ion-select-option>
+      </ion-select>
     </ion-item>
 
     <ion-item>

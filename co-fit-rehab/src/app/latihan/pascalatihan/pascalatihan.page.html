@@ -3,19 +3,21 @@
   <br />
   
     <form [formGroup]="postExerciseForm" (ngSubmit)="onSubmit()">
-      <ion-item>
-        <ion-label position="floating">Skala Borg</ion-label>
-        <ion-input type="number" placeholder="contoh: 8" formControlName="pasca_bs" required></ion-input>
-      </ion-item>
+     <ion-item>
+      <ion-label >Skala Borg</ion-label>
+      <ion-select #sbSelect [value]="currentBorgScale" [selectedText]="currentBorgScale" placeholder="Pilih" cancel-text="Batal" ok-text="Pilih" formControlName="pasca_bs" required>
+        <ion-select-option *ngFor="let bs of borgScale">{{ bs }}</ion-select-option>
+      </ion-select>
+    </ion-item>
 
       <ion-item>
         <ion-label position="floating">Saturasi Oksigen</ion-label>
-        <ion-input type="number" placeholder="contoh: 95" formControlName="pasca_sato2" required></ion-input>
+        <ion-input type="number" placeholder="Skala: 80 - 100" min="80" max="100" formControlName="pasca_sato2" required></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label position="floating">Denyut Jantung</ion-label>
-        <ion-input type="number" placeholder="contoh: 60" formControlName="pasca_hr" required></ion-input>
+        <ion-input type="number" placeholder="Skala: 50 - 200" min="50" max="200" formControlName="pasca_hr" required></ion-input>
       </ion-item>
   
   <br />
