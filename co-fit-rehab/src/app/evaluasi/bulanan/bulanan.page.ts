@@ -19,7 +19,8 @@ export class BulananPage implements OnInit {
   @ViewChild("ujCanvas") ujCanvas: ElementRef;
   @ViewChild("ssCanvas") ssCanvas: ElementRef;
 
-  Evaluation: any = [];
+  private Evaluation: any = [];
+  private bloodPressuredata: any = [];
 
   private ujChart: Chart;
   private ssChart: Chart;
@@ -49,6 +50,15 @@ export class BulananPage implements OnInit {
           labels.push(formattedDate);
           datasetUjiJalan.push(item['uji_jalan']);
           datasetSkalaSesak.push(item['skala_sesak']);
+
+          // construct blood pressure data
+          var bpData = {
+            'date': formattedDate,
+            'sistolik': item['sistolik'],
+            'diastolik': item['diastolik']
+          }
+
+          this.bloodPressuredata.push(bpData);
         });
 
     if(this.ujChart) {

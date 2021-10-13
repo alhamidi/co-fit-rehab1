@@ -20,8 +20,26 @@
   </ion-card>
 
   <br />
-  <br />
 
+  <p>Tekanan Darah</p>
+  <ion-card>
+    <ion-grid align="center">
+      <ion-row>
+        <ion-col center style="border: 1px solid #aeb7ca; background: lightgray; color: black;"><b>Tanggal</b></ion-col>
+        <ion-col center style="border: 1px solid #aeb7ca; background: lightgray; color: black;"><b>Sistolik</b></ion-col>
+        <ion-col center style="border: 1px solid #aeb7ca; background: lightgray; color: black;"><b>Diastolik</b></ion-col>
+      </ion-row>
+      
+      <ion-row *ngFor="let item of bloodPressuredata; index as i">
+        <ion-col center style="border: 1px solid #aeb7ca;"> {{ item.date }}</ion-col>
+        <ion-col center style="border: 1px solid #aeb7ca;"> {{ item.sistolik }}</ion-col>
+        <ion-col center style="border: 1px solid #aeb7ca;"> {{ item.diastolik }}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <br />
+  <br />
   <ion-button type="submit" expand="block" color="dark" href="menu/evaluasi/bulanan/tambah">Input Data Evaluasi
   </ion-button>
 
