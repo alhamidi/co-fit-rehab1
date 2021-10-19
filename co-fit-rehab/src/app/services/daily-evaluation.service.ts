@@ -18,8 +18,8 @@ export class DailyEval {
 
 export class DailyEvaluationService {
 
-  // endpoint = 'https://cofitrehab-ui.org/api/daily_evaluation/';
-  endpoint = 'https://localhost/api/daily_evaluation/';
+  endpoint = 'https://cofitrehab-ui.org/api/daily_evaluation/';
+  // endpoint = 'https://localhost/api/daily_evaluation/';
 
   httpOptions = {
     headers: new HttpHeaders()

@@ -20,8 +20,8 @@ export class WeeklyEval {
 
 export class WeeklyEvaluationService {
 
-  // endpoint = 'https://cofitrehab-ui.org/api/weekly_evaluation/';
-  endpoint = 'https://localhost/api/weekly_evaluation/';
+  endpoint = 'https://cofitrehab-ui.org/api/weekly_evaluation/';
+  // endpoint = 'https://localhost/api/weekly_evaluation/';
 
   httpOptions = {
     headers: new HttpHeaders()

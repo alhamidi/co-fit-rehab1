@@ -41,13 +41,13 @@ export class PatientExerciseData {
 
 export class PatientExerciseService {
 
-  // endpoint = 'https://cofitrehab-ui.org/api/patient_exercise/';
-  // updateEndpoint = 'https://cofitrehab-ui.org/api/patient_exercise/?type=update';
-  // updateLevelEndpoint = 'https://cofitrehab-ui.org/api/endurance_level/';
+  endpoint = 'https://cofitrehab-ui.org/api/patient_exercise/';
+  updateEndpoint = 'https://cofitrehab-ui.org/api/patient_exercise/?type=update';
+  updateLevelEndpoint = 'https://cofitrehab-ui.org/api/endurance_level/';
 
-  endpoint = 'https://localhost/api/patient_exercise/';
-  updateEndpoint = 'https://localhost/api/patient_exercise/?type=update';
-  updateLevelEndpoint = 'https://localhost/api/endurance_level/';
+  // endpoint = 'https://localhost/api/patient_exercise/';
+  // updateEndpoint = 'https://localhost/api/patient_exercise/?type=update';
+  // updateLevelEndpoint = 'https://localhost/api/endurance_level/';
 
   httpOptions = {
     headers: new HttpHeaders()
