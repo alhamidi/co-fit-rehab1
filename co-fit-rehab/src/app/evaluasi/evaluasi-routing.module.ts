@@ -14,7 +14,11 @@ const routes: Routes = [
   {
     path: 'bulanan',
     loadChildren: () => import('./bulanan/bulanan.module').then( m => m.BulananPageModule)
+  },  {
+    path: 'harian',
+    loadChildren: () => import('./harian/harian.module').then( m => m.HarianPageModule)
   },
+
 ];
 
 @NgModule({

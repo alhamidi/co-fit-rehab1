@@ -14,12 +14,14 @@ import { Router } from '@angular/router';
 export class PralatihanPage implements OnInit {
 
   preExerciseForm: FormGroup;
-
+  borgScale: Array<string>;
+  
   constructor(
     private router: Router, 
     public formBuilder: FormBuilder, 
     private userdataService: UserdataService, 
-    private zone: NgZone,) { 
+    private zone: NgZone,
+  ) { 
 
     this.preExerciseForm = this.formBuilder.group({
       pra_bs: [''],
@@ -29,6 +31,9 @@ export class PralatihanPage implements OnInit {
   }
 
   ngOnInit() {
+    this.borgScale = ["6", "7", "8", "9", "10", "11", 
+                      "12", "13", "14", "15", "16", 
+                      "17", "18", "19", "20"];
   }
 
   onSubmit() {
@@ -40,7 +45,7 @@ export class PralatihanPage implements OnInit {
       this.router.navigate(['/menu/latihan/video']);
     }
   }
-  
+
   setPatientExerciseData() {
     this.userdataService.getPatientId().then((patientId) => {
       let data = {

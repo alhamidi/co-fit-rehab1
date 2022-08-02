@@ -7,36 +7,39 @@
 </ion-header>
 
 <ion-content class="ion-padding">   
-  <p>Uji Jalan</p>
+  <p>Uji Jalan 6 Menit</p>
   <ion-card>
     <canvas id="ujCanvas" #ujCanvas></canvas>
   </ion-card>
 
   <br />
 
-  <p>Kualitas Hidup</p>
-  <ion-card>
-    <canvas id="khCanvas" #khCanvas></canvas>
-  </ion-card>
-
-  <br />
-
-  <p>Skala Sesak</p>
+  <p>Skala Sesak mMRC</p>
   <ion-card>
     <canvas id="ssCanvas" #ssCanvas></canvas>
   </ion-card>
 
   <br />
 
-  <p>Darah</p>
+  <p>Tekanan Darah</p>
   <ion-card>
-    <canvas id="drhCanvas" #drhCanvas></canvas>
+    <ion-grid align="center">
+      <ion-row>
+        <ion-col center style="border: 1px solid #aeb7ca; background: lightgray; color: black;"><b>Tanggal</b></ion-col>
+        <ion-col center style="border: 1px solid #aeb7ca; background: lightgray; color: black;"><b>Sistolik</b></ion-col>
+        <ion-col center style="border: 1px solid #aeb7ca; background: lightgray; color: black;"><b>Diastolik</b></ion-col>
+      </ion-row>
+      
+      <ion-row *ngFor="let item of bloodPressuredata; index as i">
+        <ion-col center style="border: 1px solid #aeb7ca;"> {{ item.date }}</ion-col>
+        <ion-col center style="border: 1px solid #aeb7ca;"> {{ item.sistolik }}</ion-col>
+        <ion-col center style="border: 1px solid #aeb7ca;"> {{ item.diastolik }}</ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card>
 
   <br />
-
   <br />
-
   <ion-button type="submit" expand="block" color="dark" href="menu/evaluasi/bulanan/tambah">Input Data Evaluasi
   </ion-button>
 

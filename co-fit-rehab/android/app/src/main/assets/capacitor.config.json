@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "co-fit-rehab",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { SkalaBorgPage } from './skala-borg.page';
+import { HarianPage } from './harian.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: SkalaBorgPage
+    component: HarianPage
+  },
+  {
+    path: 'tambah',
+    loadChildren: () => import('./tambah/tambah.module').then( m => m.TambahPageModule)
   }
 ];
 
@@ -14,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class SkalaBorgPageRoutingModule {}
+export class HarianPageRoutingModule {}

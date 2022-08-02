@@ -12,6 +12,7 @@ import { MonthlyEvaluationService } from './../../../services/monthly-evaluation
 export class TambahPage implements OnInit {
 
   monthlyEvalForm: FormGroup;
+  skalaSesak: Array<string>;
 
   constructor(
     private router: Router,
@@ -21,13 +22,14 @@ export class TambahPage implements OnInit {
   ) { 
     this.monthlyEvalForm = this.formBuilder.group({
       uji_jalan: [''],
-      kualitas_hidup: [''],
       skala_sesak: [''],
-      darah: [''],
+      sistolik: [''],
+      diastolik: [''],
     })
   }
 
   ngOnInit() {
+    this.skalaSesak = ["0", "1", "2", "3", "4"];
   }
 
   onSubmit() {

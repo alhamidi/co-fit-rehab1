@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SkalaBorgPageRoutingModule } from './skala-borg-routing.module';
+import { HarianPageRoutingModule } from './harian-routing.module';
 
-import { SkalaBorgPage } from './skala-borg.page';
+import { HarianPage } from './harian.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SkalaBorgPageRoutingModule
+    HarianPageRoutingModule
   ],
-  declarations: [SkalaBorgPage]
+  declarations: [HarianPage]
 })
-export class SkalaBorgPageModule {}
+export class HarianPageModule {}

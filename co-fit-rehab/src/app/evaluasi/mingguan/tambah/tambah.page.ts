@@ -13,6 +13,7 @@ import { WeeklyEvaluationService } from './../../../services/weekly-evaluation.s
 export class TambahPage implements OnInit {
 
   weeklyEvalForm: FormGroup;
+  bfiScale: Array<string>;
 
   constructor(
     private router: Router,
@@ -21,13 +22,14 @@ export class TambahPage implements OnInit {
     private weeklyEvalService: WeeklyEvaluationService    
   ) { 
     this.weeklyEvalForm = this.formBuilder.group({
-      rhr: [''],
       bfi: [''],
       sts30detik: [''],
     })
   }
 
   ngOnInit() {
+    this.bfiScale = ["0", "1", "2", "3", "4", "5",
+                     "6", "7", "8", "9", "10"];
   }
 
   onSubmit() {

@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SkalaBorgPage } from './skala-borg.page';
+import { HarianPage } from './harian.page';
 
-describe('SkalaBorgPage', () => {
-  let component: SkalaBorgPage;
-  let fixture: ComponentFixture<SkalaBorgPage>;
+describe('HarianPage', () => {
+  let component: HarianPage;
+  let fixture: ComponentFixture<HarianPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SkalaBorgPage ],
+      declarations: [ HarianPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SkalaBorgPage);
+    fixture = TestBed.createComponent(HarianPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

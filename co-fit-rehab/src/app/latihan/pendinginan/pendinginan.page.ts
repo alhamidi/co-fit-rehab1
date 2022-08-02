@@ -41,7 +41,6 @@ export class PendinginanPage implements OnInit, PipeTransform {
   }
 
   transform(url) {
-    alert("transform "+ url);
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 

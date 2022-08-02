@@ -14,6 +14,7 @@ import { UserdataService } from './../../services/userdata.service';
 export class PascapendinginanPage implements OnInit {
 
   postCoolingdownForm: FormGroup;
+  borgScale: Array<string>;
 
   constructor(
     private router: Router,
@@ -31,6 +32,9 @@ export class PascapendinginanPage implements OnInit {
   }
 
   ngOnInit() {
+    this.borgScale = ["6", "7", "8", "9", "10", "11", 
+                      "12", "13", "14", "15", "16", 
+                      "17", "18", "19", "20"];
   }
 
   onSubmit() {

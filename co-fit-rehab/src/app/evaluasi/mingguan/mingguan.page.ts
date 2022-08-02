@@ -16,13 +16,11 @@ import { Chart, registerables  } from "chart.js";
 })
 
 export class MingguanPage implements OnInit {
-  @ViewChild("rhrCanvas") rhrCanvas: ElementRef;
   @ViewChild("bfiCanvas") bfiCanvas: ElementRef;
   @ViewChild("stsCanvas") stsCanvas: ElementRef;
 
   Evaluation: any = [];
 
-  private rhrChart: Chart;
   private bfiChart: Chart;
   private stsChart: Chart;
 
@@ -37,7 +35,6 @@ export class MingguanPage implements OnInit {
 
   ionViewDidEnter() {
     var labels = [];
-    var datasetRHR = [];
     var datasetBFI = [];
     var datasetSTS = [];
 
@@ -50,54 +47,9 @@ export class MingguanPage implements OnInit {
           let date = new Date(item['tanggal']);
           var formattedDate = formatDate(date, 'dd MMM', 'en');
           labels.push(formattedDate);
-          datasetRHR.push(item['rhr']);
           datasetBFI.push(item['bfi']);
           datasetSTS.push(item['sts30detik']);
         });
-
-        if(this.rhrChart) {
-          this.rhrChart.destroy();
-        }
-
-    // create line chart
-    this.rhrChart = new Chart(this.rhrCanvas.nativeElement, {
-      type: "line",
-      options: {
-        plugins: {
-          legend: {
-            display: false,
-          }
-        }
-      },
-      data: {
-        labels: labels,
-        datasets: [
-        {
-          label: "Detak Jantung Istirahat", // BFI
-          fill: false,
-          // lineTension: 0.1,
-          backgroundColor: "rgba(225,0,0,0.4)",
-          borderColor: "red", // The main line color
-          borderCapStyle: 'square',
-          borderDash: [], // try [5, 15] for instance
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: "black",
-          pointBackgroundColor: "white",
-          pointBorderWidth: 1,
-          pointHoverRadius: 8,
-          pointHoverBackgroundColor: "yellow",
-          pointHoverBorderColor: "brown",
-          pointHoverBorderWidth: 2,
-          pointRadius: 1,
-          pointHitRadius: 5,
-          // notice the gap in the data and the spanGaps: true
-          data: datasetRHR,
-          spanGaps: true,
-        }
-        ]
-      }
-    });
 
     if(this.bfiChart) {
       this.bfiChart.destroy();

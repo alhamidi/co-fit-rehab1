@@ -9,7 +9,6 @@ import { UserdataService } from './userdata.service';
 
 
 export class WeeklyEval {
-  rhr: string;
   bfi: string;
   sts30detik: string;
 }
@@ -22,6 +21,7 @@ export class WeeklyEval {
 export class WeeklyEvaluationService {
 
   endpoint = 'https://cofitrehab-ui.org/api/weekly_evaluation/';
+  // endpoint = 'https://localhost/api/weekly_evaluation/';
 
   httpOptions = {
     headers: new HttpHeaders()
@@ -40,7 +40,6 @@ export class WeeklyEvaluationService {
       let postData = {
         id_pasien: patientId,
         tanggal: today,
-        rhr: data['rhr'],
         bfi: data['bfi'],
         sts30detik: data['sts30detik']
       }

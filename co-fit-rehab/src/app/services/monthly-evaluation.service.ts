@@ -9,9 +9,9 @@ import { formatDate } from '@angular/common';
 
 export class MonthlyEval {
   uji_jalan: string;
-  kualitas_hidup: string;
   skala_sesak: string;
-  darah: string;
+  sistolik: string;
+  diastolik: string;
 }
 
 @Injectable({
@@ -22,6 +22,7 @@ export class MonthlyEval {
 export class MonthlyEvaluationService {
 
   endpoint = 'https://cofitrehab-ui.org/api/monthly_evaluation/';
+  // endpoint = 'https://localhost/api/monthly_evaluation/';
 
   httpOptions = {
     headers: new HttpHeaders()
@@ -37,9 +38,9 @@ export class MonthlyEvaluationService {
       id_pasien: 1,
       tanggal: today,
       uji_jalan: data['uji_jalan'],
-      kualitas_hidup: data['kualitas_hidup'],
       skala_sesak: data['skala_sesak'],
-      darah: data['darah'],
+      sistolik: data['sistolik'],
+      diastolik: data['diastolik'],
     }
 
     console.log("**** " + JSON.stringify(postData));

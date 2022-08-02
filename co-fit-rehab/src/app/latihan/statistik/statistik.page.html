@@ -6,24 +6,94 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content class="ion-padding">
-  <p>Denyut Jantung</p>
-  <ion-card>
-    <canvas id="hrCanvas" #hrCanvas></canvas>
-  </ion-card>
+  <ion-slides pager>
 
-  <br />
+    <ion-slide>
+      
+      <ion-card align="center">
+        <h5><strong>Latihan Pernapasan</strong></h5>
+        <br />
+        
+        <ion-card align="center">
+          <p>Denyut Jantung</p>
+          <canvas id="hrBreathingCanvas" #hrBreathingCanvas></canvas>
+        </ion-card>
+
+        <br />
   
-  <p>Saturasi Oksigen</p>
-  <ion-card>
-    <canvas id="sato2Canvas" #sato2Canvas></canvas>
-  </ion-card>
+        <ion-card align="center">
+          <p>Saturasi Oksigen</p>
+          <canvas id="sato2BreathingCanvas" #sato2BreathingCanvas></canvas>
+        </ion-card>
 
-  <br />
+        <br />
 
-  <p>Skala Borg</p>
-  <ion-card>
-    <canvas id="sbCanvas" #sbCanvas></canvas>
-  </ion-card>
+        <ion-card align="center">
+        <p>Skala Borg</p>
+        <canvas id="sbBreatingCanvas" #sbBreathingCanvas></canvas>
+      </ion-card>
+      </ion-card>
+
+    </ion-slide>
+
+    <ion-slide>
+      
+      <ion-card align="center">
+        <h5><strong>Latihan Endurans</strong></h5>
+        <br />
+        
+        <ion-card align="center">
+          <p>Denyut Jantung</p>
+          <canvas id="hrEnduranceCanvas" #hrEnduranceCanvas></canvas>
+        </ion-card>
+
+        <br />
+  
+        <ion-card align="center">
+          <p>Saturasi Oksigen</p>
+          <canvas id="sato2EnduranceCanvas" #sato2EnduranceCanvas></canvas>
+        </ion-card>
+
+        <br />
+
+        <ion-card align="center">
+          <p>Skala Borg</p>
+          <canvas id="sbEnduranceCanvas" #sbEnduranceCanvas></canvas>
+        </ion-card>
+      </ion-card>
+
+    </ion-slide>
+
+    <ion-slide>
+      
+      <ion-card align="center">
+        <h5><strong>Latihan Penguatan</strong></h5>
+        <br />
+        
+        <ion-card align="center">
+          <p>Denyut Jantung</p>
+          <canvas id="hrStrengthCanvas" #hrStrengthCanvas></canvas>
+        </ion-card>
+
+        <br />
+  
+        <ion-card align="center">
+          <p>Saturasi Oksigen</p>
+          <canvas id="sato2StrengthCanvas" #sato2StrengthCanvas></canvas>
+        </ion-card>
+
+        <br />
+
+        <ion-card align="center">
+          <p>Skala Borg</p>
+          <canvas id="sbStrengthCanvas" #sbStrengthCanvas></canvas>
+        </ion-card>
+      </ion-card>
+
+    </ion-slide>
+
+  </ion-slides>
 
 </ion-content>

@@ -24,10 +24,6 @@ const routes: Routes = [
     loadChildren: () => import('./video/video.module').then( m => m.VideoPageModule)
   },
   {
-    path: 'skala-borg',
-    loadChildren: () => import('./skala-borg/skala-borg.module').then( m => m.SkalaBorgPageModule)
-  },
-  {
     path: 'pendinginan',
     loadChildren: () => import('./pendinginan/pendinginan.module').then( m => m.PendinginanPageModule)
   },

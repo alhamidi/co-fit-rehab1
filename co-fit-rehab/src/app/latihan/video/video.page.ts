@@ -37,7 +37,7 @@ export class VideoPage implements OnInit, PipeTransform {
   }
 
   ngOnInit() {
-    
+
   }
 
   transform(url) {
@@ -92,4 +92,5 @@ export class VideoPage implements OnInit, PipeTransform {
     // move to post exercise page
     this.router.navigate(['/menu/latihan/pascalatihan']);
   }
+
 }
