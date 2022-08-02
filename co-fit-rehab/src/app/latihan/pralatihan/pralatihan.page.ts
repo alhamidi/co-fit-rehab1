@@ -20,7 +20,8 @@ export class PralatihanPage implements OnInit {
     private router: Router, 
     public formBuilder: FormBuilder, 
     private userdataService: UserdataService, 
-    private zone: NgZone,) { 
+    private zone: NgZone,
+  ) { 
 
     this.preExerciseForm = this.formBuilder.group({
       pra_bs: [''],

@@ -3,6 +3,9 @@ import { Platform, AlertController  } from '@ionic/angular';
 
 import { Location } from '@angular/common';
 
+import { UserdataService } from './services/userdata.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -16,7 +19,9 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor (
     private platform: Platform,
     private _location: Location,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private userdataService: UserdataService, 
+    private router: Router,
     ) { 
     this.platform.backButton.subscribeWithPriority(10, (processNextHandler) => {
       console.log('Back press handler!');
@@ -26,7 +31,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
         console.log('Show Exit Alert!');
         this.showExitConfirm();
         processNextHandler();
-      } else if (this._location.isCurrentPathEqualTo('/menu/latihan/video')) {
+      } else if (this._location.isCurrentPathEqualTo('/menu/latihan/video') || 
+                this._location.isCurrentPathEqualTo('/menu/latihan/pendinginan')) {
          document.exitFullscreen();
       } else {
 
@@ -74,7 +80,8 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
+
   ngAfterViewInit() {
     this.backButtonSubscription = this.platform.backButton.subscribe(() => {
       // navigator['app'].exitApp();
